@@ -4,7 +4,6 @@ var intervalHandle;
 function resetPage(){
 
     document.getElementById("inputArea").style.display = "block";
-
 }
 
 function tick(){
@@ -28,7 +27,7 @@ function tick(){
 
     // stop is down to zero
     if (secondsRemaining === 0){
-        alert("Done!");
+        console.log("Time is up...")
         clearInterval(intervalHandle);
         resetPage();
     }
