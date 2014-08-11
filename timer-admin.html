@@ -5,7 +5,7 @@
     <title>WHO-Timer-admin</title>
 	<link href="timer-admin.css" rel="stylesheet">
     <script src="jquery/jquery-2.1.1.js"></script>
-    <script src="timer-admin.js"></script>
+    <script src="timer.js"></script>
 </head>
 <body>
     <div id="container">
@@ -13,17 +13,33 @@
 			<h2>WHO-Timer Admin Console</h2>
         	<table class="console">
 				<tr>
-					<td id="console-time-display">Time Display</td>
+					<td colspan="4"><span id="timer_admin">0:00</span></td>
 				</tr>
 				<tr>
-					<td>TOTAL TIME</td>
-					<td>SUM-UP</td>
+					<td colspan="2">TOTAL TIME</td>
+					<td colspan="2">SUM-UP</td>
+				</tr>
+				<tr>
+					<td>up</td>
+					<td>down</td>
+					<td>up</td>
+					<td>down</td>
+				</tr>
+				<tr>
+					<td colspan="4">CLEAR</td>
+				</tr>
+				<tr>
+					<td colspan="4">[ ]</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input id="testInput1"></td>
+					<td colspan="2"><button id="testSubmitButton1" onclick=startCountdown()>Submit</button></td>
 				</tr>
 			</table>
 		</div>
     </div>
-	<div id="template">
+	<!--<div id="template">
 		<img src="images/originals/LimitimerControl_small.jpg">
-	</div>
+	</div>-->
 </body>
 </html>

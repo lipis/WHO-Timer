@@ -1,10 +1,14 @@
 /* timer-admin.html */
 #consoleBox {
     width: 500px;
+    height: 500px;
     text-align: center;
 }
 #consoleBox table {
     width: 100%;
+}
+#consoleBox {
+    border: 1px solid black;
 }
 #consoleBox table,
 #consoleBox th,
@@ -13,8 +17,11 @@
 }
 #consoleBox td {
     padding: 10px;
+    width: 25%;
 }
-
+#timer_admin {
+    font-weight: bold;
+}
 
 
 
@@ -30,5 +37,5 @@
 
 
 #template {
-    padding-top: 500px;
+    padding-top: 100px;
 }
