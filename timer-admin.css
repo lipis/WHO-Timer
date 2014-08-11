@@ -1,0 +1,34 @@
+/* timer-admin.html */
+#consoleBox {
+    width: 500px;
+    text-align: center;
+}
+#consoleBox table {
+    width: 100%;
+}
+#consoleBox table,
+#consoleBox th,
+#consoleBox td {
+    border: 1px solid black;
+}
+#consoleBox td {
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#template {
+    padding-top: 500px;
+}
