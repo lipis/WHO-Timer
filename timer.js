@@ -1,3 +1,5 @@
+//Here is all the logic
+
 var secondsRemaining;
 var intervalHandle;
 
