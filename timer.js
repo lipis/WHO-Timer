@@ -27,6 +27,11 @@ function tick(){
 
     // now change the display
     $('#timer_admin').html(message);
+    console.log(message);
+
+    $('#timer_public').html("bzzz");
+
+
 
     // stop is down to zero
     if (secondsRemaining === 0){

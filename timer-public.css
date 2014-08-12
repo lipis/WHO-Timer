@@ -6,6 +6,11 @@
 #timerBox {
     border: 1px solid black;
 }
-h1 {
+#timerBox {
     font-size: 200px;
+}
+#timerBox table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
