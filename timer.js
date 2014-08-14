@@ -3,6 +3,7 @@
 var secondsRemaining;
 var intervalHandle;
 var publicTimerWindow;
+var myTimer;
 
 
 function resetPage(){
@@ -33,10 +34,9 @@ function tick(){
     $('#timer_admin').html(message);
 
     //in timer-public
-
+    publicTimerWindow.document.getElementById("timer_public").textContent = message;
 
     /*publicTimerWindow.document.write("Bye!");*/
-
     /*$('#timer_public').html("bzzz");*/
 
 
@@ -87,7 +87,10 @@ function startCountdown(){
 function openPublicTimerWindow() {
 
     //new window
-    var publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
+    publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
+
+
+
     console.log("openPublicTimerWindow() run...");
 
 
@@ -105,7 +108,6 @@ $(document).ready(function() {
     //create event handler for submit button
     $('#testSubmitButton1').attr('onclick', 'startCountdown()');
     console.log("auto:handler for Submit button added...")
-
 
 
 });
