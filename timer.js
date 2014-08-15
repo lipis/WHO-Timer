@@ -2,6 +2,7 @@
 
 var secondsRemaining;
 var intervalHandle;
+var message;
 
 function resetPage(){
 
@@ -11,7 +12,6 @@ function resetPage(){
 function tick(){
     // grab the td with #timer_admin
     /*var timer_public = document.getElementById("time");*/
-    var timer_admin = $('#timer_admin');
 
     // turn the seconds into mm:ss
     var min = Math.floor(secondsRemaining / 60);
@@ -28,8 +28,6 @@ function tick(){
     // now change the display
     $('#timer_admin').html(message);
     console.log(message);
-
-    $('#timer_public').html("bzzz");
 
 
 
@@ -79,6 +77,10 @@ $(document).ready(function() {
 
     //test 1
     console.log("document ready...");
+
+    //test 2
+    console.log("this is document A");
+    $('#timer_public').html("bzzz");
 
 
 
