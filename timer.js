@@ -2,13 +2,9 @@
 
 var secondsRemaining;
 var intervalHandle;
-<<<<<<< HEAD
-var message;
-=======
 var publicTimerWindow;
 var myTimer;
 
->>>>>>> bd300ba518c727f76a47a0b0ddb1e49b971b2cff
 
 function resetPage(){
 
@@ -18,10 +14,7 @@ function resetPage(){
 function tick(){
     // grab the td with #timer_admin
     /*var timer_public = document.getElementById("time");*/
-<<<<<<< HEAD
-=======
     /*var timer_admin = $('#timer_admin')*/;
->>>>>>> bd300ba518c727f76a47a0b0ddb1e49b971b2cff
 
     // turn the seconds into mm:ss
     var min = Math.floor(secondsRemaining / 60);
@@ -40,15 +33,12 @@ function tick(){
     //in timer-admin
     $('#timer_admin').html(message);
 
-<<<<<<< HEAD
-=======
     //in timer-public
     publicTimerWindow.document.getElementById("timer_public").textContent = message;
 
     /*publicTimerWindow.document.write("Bye!");*/
     /*$('#timer_public').html("bzzz");*/
 
->>>>>>> bd300ba518c727f76a47a0b0ddb1e49b971b2cff
 
 
     // stop is down to zero
@@ -68,11 +58,11 @@ function startCountdown(){
     console.log("'Submit' pressed/StartCountdown() started...");
 
     /*function resetPage(){
-        document.getElementById("inputArea").style.display = "block";
-    }*/
+     document.getElementById("inputArea").style.display = "block";
+     }*/
 
     /*// get contents of the "minutes" text box
-    var minutes = document.getElementById("minutes").value;*/
+     var minutes = document.getElementById("minutes").value;*/
 
     var time = $('#testInput1').val();
     console.log("testInput1: " + time);
@@ -115,16 +105,9 @@ $(document).ready(function() {
     $('#openPublic').attr('onclick', 'openPublicTimerWindow()');
     console.log("auto:handler for OpenPublicTimer button added...");
 
-<<<<<<< HEAD
-    //test 2
-    console.log("this is document A");
-    $('#timer_public').html("bzzz");
-
-=======
     //create event handler for submit button
     $('#testSubmitButton1').attr('onclick', 'startCountdown()');
     console.log("auto:handler for Submit button added...")
->>>>>>> bd300ba518c727f76a47a0b0ddb1e49b971b2cff
 
 
 });
