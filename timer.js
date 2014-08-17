@@ -5,32 +5,49 @@ var s_time_req;
 var secondsRemaining;
 var intervalHandle;
 var publicTimerWindow;
-var myTimer;
+var publicTWF;
 
 //main - when document ready:
 $(document).ready(function() {
 
-    //test1
-    console.log("auto:document ready");
+    //call initializeWindows()
+    publicTWF = false;
+    /*initializeWindows();*/
+    console.log("-auto:initializeWindows()");
+
+    //call initializeButtonHandlers()
+    initializeButtonHandlers();
+    console.log("-auto:initializeButtonHandlers()");
+
+    //call initializeCounters()
+    initializeCounters();
+    console.log("-auto:initializeCounters()");
+});
+
+function initializeWindows() {
+
+    openPublicTimerWindow();
+    closePublicTimerWindow();
+}
+
+function initializeCounters() {
 
     //reset req times
     t_time_req = 0;
     s_time_req = 0;
-    console.log("t_time: " + t_time_req);
-    console.log("s_time: " + s_time_req);
 
-    //call resetDashboards()
-    resetDashboards();
-    console.log("auto:resetDashboards() run");
+    var resetDisplayString = "00:00";
 
-    //call createButtonHandlers()
-    createButtonHandlers();
-    console.log("auto:createButtonHandlers() run");
+    $('#A').html(resetDisplayString);
 
-    /*//call openPublicTimerWindow()
-    openPublicTimerWindow()
-    console.log("auto:openPublicTimerWindow() run");*/
-});
+    //if publicTimerWindow exists, then reset it
+    /*if (publicTimerWindow) {
+        publicTimerWindow.document.getElementById("timer_public").textContent = resetDisplayString;
+    }*/
+
+    $('#A1').html(resetDisplayString);
+    $('#A2').html(resetDisplayString);
+}
 
 //start the timer in countdown mode
 function startCountdown(){
@@ -93,15 +110,24 @@ function updateDisplays(updatedTime) {
 //opens a new window showing the public Timer
 function openPublicTimerWindow() {
 
-    //new window
-    publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
+    //if public timer window already open, do nothing
+    if (!publicTWF) {
+        publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
+        publicTWF = true;
+    } else {
+        return;
+    }
 
     console.log("openPublicTimerWindow() run...");
 }
 
 //closes the public Timer window
 function closePublicTimerWindow() {
-    publicTimerWindow.close();
+
+    if (publicTimerWindow) {
+        publicTimerWindow.close();
+        publicTWF = false;
+    }
 }
 
 //reset everything
@@ -114,22 +140,7 @@ function clear() {
     console.log("clear() run");
 }
 
-function resetDashboards() {
-
-    //- in timer-public, A
-    $('#A').html("00:00");
-
-    //- in timer-public, A1
-    $('#A1').html("00:00");
-
-    //- in timer-public, A2
-    $('#A2').html("00:00");
-
-    /*//- in timer-public
-    publicTimerWindow.document.getElementById("timer_public").textContent = message;*/
-}
-
-function createButtonHandlers() {
+function initializeButtonHandlers() {
 
     //create onclick() even handlers for all buttons:
     //Total time UP

@@ -18,8 +18,12 @@
     padding: 10px;
     width: 25%;
 }
-#timer_admin {
+#A, #A1, #A2 {
     font-weight: bold;
+}
+
+#A {
+    font-size: 25px;
 }
 
 
