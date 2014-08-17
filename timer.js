@@ -1,3 +1,12 @@
+//ToDo:
+//*Implement PAUSE
+//*Implement CLEAR
+//*Start normal counting after 0 time
+//*Reset public timer when page resets
+//*Implement traffic light colors
+//*Increase and decrease timer live
+
+
 //Here is all the logic
 
 var t_time_req;
@@ -33,7 +42,7 @@ function initializeCounters() {
     $('#A').html(resetDisplayString);
 
     //if publicTimerWindow exists and is open, then reset it
-    if (publicTimerWindow && publicTWF) {
+    if (publicTWF) {
         publicTimerWindow.document.getElementById("timer_public").textContent = resetDisplayString;
     }
 
@@ -44,43 +53,71 @@ function initializeCounters() {
 //start the timer in countdown mode
 function startCountdown(){
 
-    //reset timer
+    if (t_time_req > 0) {
+        console.log("t_time_req: " + t_time_req);
 
-    //get time from t_time_req
-    var time = t_time_req;
+        //get time from t_time_req
+        var time = t_time_req;
 
-    // how many seconds
-    secondsRemaining = time * 60;
+        // how many seconds
+        secondsRemaining = time * 60;
 
-    //every second, call the "tick" function
-    // have to make it into a variable so that you can stop the interval later!!!
-    intervalHandle = setInterval(tick, 1000);
-    console.log("tick() run...");
+        //every second, call the "tick" function
+        // have to make it into a variable so that you can stop the interval later!!!
+        intervalHandle = setInterval(tick, 1000);
+        console.log("tick() run...");
+
+        $('#b_start').attr('disabled','disabled');
+        $('#b_pause').removeAttr("disabled");
+    }
+}
+
+function pause() {
+
+    /*clearInterval(intervalHandle);*/
 }
 
 //this is the core method used inside the timer itself
 function tick(){
 
-    //turn the seconds into mm:ss
-    var min = Math.floor(secondsRemaining / 60);
-    var sec = secondsRemaining - (min * 60);
+    //inside the time limit
+    if (secondsRemaining > 0) {
 
-    //add a leading zero (as a string value) if seconds less than 10
-    if (sec < 10) {
-        sec = "0" + sec;
+        //turn the seconds into mm:ss
+        var min = Math.floor(secondsRemaining / 60);
+        var sec = secondsRemaining - (min * 60);
+
+        //add a leading zero for minutes
+        if (min < 10) {
+            min = "0" + min;
+        }
+
+        //add a leading zero for seconds
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+
+        //create "message"
+        var message = min.toString() + ":" + sec;
+
+        //subtract from seconds remaining
+        secondsRemaining--
+        console.log(secondsRemaining);
+
+    //outside the time limit
+    } else if (secondsRemaining >= 0) {
+
+        //turn the seconds into mm:ss
+        var min = Math.floor(secondsRemaining / 60);
+        var sec = secondsRemaining - (min * 60);
+
+        //create "message"
+        var message = min.toString() + ":" + sec;
+
+        //add to seconds remaining
+        secondsRemaining++;
+        console.log(secondsRemaining);
     }
-
-    //concatenate with colon
-    var message = min.toString() + ":" + sec;
-
-    //stop is down to zero
-    if (secondsRemaining === 0){
-
-        clearInterval(intervalHandle);
-    }
-
-    //subtract from seconds remaining
-    secondsRemaining--;
 
     //update displays
     updateDisplays(message);
@@ -155,7 +192,10 @@ function initializeButtonHandlers() {
     $('#b_start').attr('onclick', 'startCountdown()');
 
     //PAUSE button
-    $('#b_pause').attr('onclick', 'pause()');
+    $('#b_pause').attr({
+        onclick: 'pause()',
+        disabled: 'disabled()'
+    });
 
     //CLEAR button
     $('#b_clear').attr('onclick', 'clear()');
@@ -164,8 +204,10 @@ function initializeButtonHandlers() {
     $('#openPublic').attr('onclick', 'openPublicTimerWindow()');
 
     //PublicTimer close button
-    $('#closePublic').attr('onclick', 'closePublicTimerWindow()');
-    $('#closePublic').attr('disabled','disabled');
+    $('#closePublic').attr({
+        onclick: 'closePublicTimerWindow()',
+        disabled: 'disabled()'
+    });
 }
 
 function set_t_up() {
