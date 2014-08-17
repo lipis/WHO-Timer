@@ -10,10 +10,8 @@ var publicTWF;
 //main - when document ready:
 $(document).ready(function() {
 
-    //call initializeWindows()
+    //initialize publicTWF flag to false
     publicTWF = false;
-    /*initializeWindows();*/
-    console.log("-auto:initializeWindows()");
 
     //call initializeButtonHandlers()
     initializeButtonHandlers();
@@ -23,12 +21,6 @@ $(document).ready(function() {
     initializeCounters();
     console.log("-auto:initializeCounters()");
 });
-
-function initializeWindows() {
-
-    openPublicTimerWindow();
-    closePublicTimerWindow();
-}
 
 function initializeCounters() {
 
@@ -40,10 +32,10 @@ function initializeCounters() {
 
     $('#A').html(resetDisplayString);
 
-    //if publicTimerWindow exists, then reset it
-    /*if (publicTimerWindow) {
+    //if publicTimerWindow exists and is open, then reset it
+    if (publicTimerWindow && publicTWF) {
         publicTimerWindow.document.getElementById("timer_public").textContent = resetDisplayString;
-    }*/
+    }
 
     $('#A1').html(resetDisplayString);
     $('#A2').html(resetDisplayString);
@@ -101,7 +93,7 @@ function updateDisplays(updatedTime) {
     $('#A').html(updatedTime);
 
     //- in timer-public
-    if (publicTimerWindow) {
+    if (publicTimerWindow && publicTWF) {
         publicTimerWindow.document.getElementById("timer_public").textContent = updatedTime;
     }
 }
@@ -114,6 +106,8 @@ function openPublicTimerWindow() {
     if (!publicTWF) {
         publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
         publicTWF = true;
+        $('#openPublic').attr('disabled','disabled');
+        $('#closePublic').removeAttr("disabled");
     } else {
         return;
     }
@@ -127,6 +121,8 @@ function closePublicTimerWindow() {
     if (publicTimerWindow) {
         publicTimerWindow.close();
         publicTWF = false;
+        $('#closePublic').attr('disabled','disabled');
+        $('#openPublic').removeAttr("disabled");
     }
 }
 
@@ -159,7 +155,7 @@ function initializeButtonHandlers() {
     $('#b_start').attr('onclick', 'startCountdown()');
 
     //PAUSE button
-    /*$('#b_pause').attr('onclick', 'pause()');*/
+    $('#b_pause').attr('onclick', 'pause()');
 
     //CLEAR button
     $('#b_clear').attr('onclick', 'clear()');
@@ -169,6 +165,7 @@ function initializeButtonHandlers() {
 
     //PublicTimer close button
     $('#closePublic').attr('onclick', 'closePublicTimerWindow()');
+    $('#closePublic').attr('disabled','disabled');
 }
 
 function set_t_up() {
