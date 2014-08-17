@@ -1,208 +1,53 @@
 //ToDo:
 //*Implement PAUSE
 //*Implement CLEAR
-//*Start normal counting after 0 time
 //*Reset public timer when page resets
-//*Implement traffic light colors
 //*Increase and decrease timer live
+//*Focus back to admin when opening new public timer
 
 
 //Here is all the logic
 
+//total time requested
 var t_time_req;
+//sum-up time requested
 var s_time_req;
-var secondsRemaining;
+//current total seconds
+var time_t_sec;
+//sum-up seconds (this is a constant)
+var time_s_sec;
 var intervalHandle;
 var publicTimerWindow;
+//public Timer Window flag signals if there is an open Public Timer window
 var publicTWF;
-var countD;
+//countMode flag can be: 0(timer on initial state or reset), 1(timer on countDown and on "green"), 2(timer on "orange"), 3(timer on "red")
+var countMode;
 
 //main - when document ready:
 $(document).ready(function() {
 
+    //initialize button handlers
+    initializeButtonHandlers();
+
     //initialize flags
-    countD = true;
+    countMode = 0;
     publicTWF = false;
 
-    //call initializeButtonHandlers()
-    initializeButtonHandlers();
-    console.log("-auto:initializeButtonHandlers()");
-
-    //call initializeCounters()
-    initializeCounters();
-    console.log("-auto:initializeCounters()");
-});
-
-function initializeCounters() {
-
-    //reset req times
+    //reset total and sum-up requested time
     t_time_req = 0;
     s_time_req = 0;
 
-    var resetDisplayString = "00:00";
-
-    $('#A').html(resetDisplayString);
-
-    //if publicTimerWindow exists and is open, then reset it
+    //reset dashboards: admin A, admin A1, admin A2, public
+    var resetS = "00:00";
+    $('#A').html(resetS);
+    $('#A1').html(resetS);
+    $('#A2').html(resetS);
     if (publicTWF) {
-        publicTimerWindow.document.getElementById("timer_public").textContent = resetDisplayString;
+        publicTimerWindow.document.getElementById("timer_public").textContent = resetS;
     }
+});
 
-    $('#A1').html(resetDisplayString);
-    $('#A2').html(resetDisplayString);
-}
-
-//start the timer in countdown mode
-function startCountdown(){
-
-    if (t_time_req > 0) {
-        console.log("t_time_req: " + t_time_req);
-
-        //get time from t_time_req
-        var time = t_time_req;
-
-        // how many seconds
-        secondsRemaining = time * 60;
-
-        //change public timer's color to green
-        $('#timerBox').css( "background-color", "#99fe00" );
-
-        //every second, call the "tick" function
-        // have to make it into a variable so that you can stop the interval later!!!
-        intervalHandle = setInterval(tick, 1000);
-        console.log("tick() run...");
-
-        $('#b_start').attr('disabled','disabled');
-        $('#b_pause').removeAttr("disabled");
-    }
-}
-
-function pause() {
-
-    /*clearInterval(intervalHandle);*/
-}
-
-//this is the core method used inside the timer itself
-function tick(){
-
-    //inside the time limit
-    if ((countD) && (secondsRemaining>0)) {
-
-        //turn the seconds into mm:ss
-        var min = Math.floor(secondsRemaining / 60);
-        var sec = secondsRemaining - (min * 60);
-
-        //add a leading zero for minutes
-        if (min < 10) {
-            min = "0" + min;
-        }
-
-        //add a leading zero for seconds
-        if (sec < 10) {
-            sec = "0" + sec;
-        }
-
-        //create "message"
-        var message = min.toString() + ":" + sec;
-
-        //subtract from seconds remaining
-        secondsRemaining--;
-
-    //outside the time limit
-    } else {
-
-        countD = false;
-        /*$('#timerBox').css( "background-color", "#fd030d" );*/
-        /*publicTimerWindow.document.getElementById("timerBox").style.background_color = "blue";*/
-
-        //turn the seconds into mm:ss
-        var min = Math.floor(secondsRemaining / 60);
-        var sec = secondsRemaining - (min * 60);
-
-        //add a leading zero for minutes
-        if (min < 10) {
-            min = "0" + min;
-        }
-
-        //add a leading zero for seconds
-        if (sec < 10) {
-            sec = "0" + sec;
-        }
-
-        //create "message"
-        var message = min.toString() + ":" + sec;
-
-        //add to seconds remaining
-        secondsRemaining++;
-    }
-
-    //update displays
-    updateDisplays(message);
-}
-
-////update displays in admin and public views
-function updateDisplays(updatedTime) {
-
-    //- in timer admin
-    $('#A').html(updatedTime);
-
-    //- in timer public
-    //change digits
-    if (publicTimerWindow && publicTWF) {
-        publicTimerWindow.document.getElementById("timer_public").textContent = updatedTime;
-    }
-
-    //change colors
-    decideColor();
-}
-
-//opens a new window showing the public Timer
-function openPublicTimerWindow() {
-
-    //if public timer window already open, do nothing
-    if (!publicTWF) {
-        publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
-        publicTWF = true;
-        $('#openPublic').attr('disabled','disabled');
-        $('#closePublic').removeAttr("disabled");
-
-    } else {
-        return;
-    }
-    console.log("openPublicTimerWindow() run...");
-}
-
-//closes the public Timer window
-function closePublicTimerWindow() {
-
-    if (publicTimerWindow) {
-        publicTimerWindow.close();
-        publicTWF = false;
-        $('#closePublic').attr('disabled','disabled');
-        $('#openPublic').removeAttr("disabled");
-    }
-}
-
-//change public timer to the appropriate color
-function decideColor() {
-
-    if (countD) {
-        publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#99fe00';
-    } else if (!countD) {
-        publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#fd030d';
-    }
-}
-
-//reset everything
-function clear() {
-
-    //refresh/reset page
-    location.reload();
-
-    //test
-    console.log("clear() run");
-}
-
+//button handler initialization and helper functions
 function initializeButtonHandlers() {
 
     //create onclick() even handlers for all buttons:
@@ -239,7 +84,6 @@ function initializeButtonHandlers() {
         disabled: 'disabled()'
     });
 }
-
 function set_t_up() {
 
     //set total time up
@@ -254,7 +98,6 @@ function set_t_up() {
         }
     }
 }
-
 function set_t_down() {
 
     //set total time down
@@ -269,7 +112,6 @@ function set_t_down() {
         }
     }
 }
-
 function set_s_up() {
 
     //set sum-up time up
@@ -284,7 +126,6 @@ function set_s_up() {
         }
     }
 }
-
 function set_s_down() {
 
     //set sum-up time down
@@ -298,4 +139,186 @@ function set_s_down() {
             $('#A2').html(s_time_req + ":" + "00");
         }
     }
+}
+
+//start the timer
+function startCountdown(){
+
+    if (t_time_req > 0) {
+
+        //get time in seconds
+        time_t_sec = t_time_req * 60;
+        time_s_sec = s_time_req *60;
+
+        //call the "tick" function every second
+        intervalHandle = setInterval(tick, 1000);
+
+        //enable/disable START and PAUSE buttons
+        $('#b_start').attr('disabled','disabled');
+        $('#b_pause').removeAttr("disabled");
+
+        //switch countMode from 0 to 1
+        countMode = 1;
+    }
+}
+
+//ToDo
+function pause() {
+
+    /*clearInterval(intervalHandle);*/
+}
+
+//this is the core timer function
+function tick(){
+
+    //if inside the time limit
+    if (time_t_sec>0 && countMode==1) {
+
+        //turn the seconds into mm:ss
+        var min = Math.floor(time_t_sec / 60);
+        var sec = time_t_sec - (min * 60);
+
+        //add a leading zero for minutes
+        if (min < 10) {
+            min = "0" + min;
+        }
+
+        //add a leading zero for seconds
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+
+        //create "time_forDisplay"
+        var time_forDisplay = min.toString() + ":" + sec;
+
+        //subtract from seconds remaining
+        time_t_sec--;
+
+    //if outside the time limit (or if time_t_sec<=0)
+    } else {
+
+        //switch countMode from 1 to 3
+        countMode = 3;
+
+        //turn the seconds into mm:ss
+        var min = Math.floor(time_t_sec / 60);
+        var sec = time_t_sec - (min * 60);
+
+        //add a leading zero for minutes
+        if (min < 10) {
+            min = "0" + min;
+        }
+
+        //add a leading zero for seconds
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+
+        //create "time_forDisplay"
+        time_forDisplay = min.toString() + ":" + sec;
+
+        //add to seconds remaining
+        time_t_sec++;
+    }
+
+    //Do the following in each 'tick':
+
+    //update the display digits
+    updateDisplays(time_forDisplay);
+
+    //update the display traffic light colors
+    paintTrafficLights();
+}
+
+////update displays in admin and public views
+function updateDisplays(time_fd) {
+
+    //- in timer admin
+    $('#A').html(time_fd);
+
+    //- in timer public
+    if (publicTimerWindow && publicTWF) {
+        publicTimerWindow.document.getElementById("timer_public").textContent = time_fd;
+    }
+}
+
+//change public timer to the appropriate color
+function paintTrafficLights() {
+
+    countMode_sec = evalcms(time_t_sec, time_s_sec);
+    console.log(countMode_sec);
+
+    //if (TotalTime < 'currentTick' < Sum-upTime)
+    if ((time_t_sec > 0) && (countMode_sec >= 0) && (countMode != 3)) {
+        //in public
+        if (publicTimerWindow) {
+            publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#99fe00';
+        }
+        //in admin
+        document.getElementById("box_green").style.backgroundColor = '#99fe00';
+        document.getElementById("box_orange").style.backgroundColor = 'white';
+        document.getElementById("box_red").style.backgroundColor = 'white'
+
+    //else if (Sum-upTime < 'currentTick' < 0)
+    } else if ((time_t_sec > 0) && (countMode_sec < 0) && (countMode != 3)) {
+        //in public
+        if (publicTimerWindow) {
+            publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#f4d75f';
+        }
+        //in admin
+        document.getElementById("box_green").style.backgroundColor = 'white';
+        document.getElementById("box_orange").style.backgroundColor = '#f4d75f';
+        document.getElementById("box_red").style.backgroundColor = 'white';
+
+    //if (0 < 'currentTick')
+    } else if (countMode == 3) {
+        //in public
+        if (publicTimerWindow) {
+            publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#fd030d';
+        }
+        //in admin
+        document.getElementById("box_green").style.backgroundColor = 'white';
+        document.getElementById("box_orange").style.backgroundColor = 'white';
+        document.getElementById("box_red").style.backgroundColor = '#fd030d';
+    }
+}
+
+//calculate currently remaining counterMode seconds (= TotalTime - Sum-upTime)
+function evalcms(time_t_sec, time_s_sec) {
+
+    var evalcmsV = time_t_sec - time_s_sec;
+    return evalcmsV;
+}
+
+//opens a new window showing the public Timer
+function openPublicTimerWindow() {
+
+    //name the parent window - this is needed in order to switch the focus back to it later
+
+
+    //if public timer window already open, do nothing
+    if (!publicTWF) {
+        publicTimerWindow = window.open("timer-public.html", "publicTimerWin")
+        publicTWF = true;
+        $('#openPublic').attr('disabled','disabled');
+        $('#closePublic').removeAttr("disabled");
+    }
+}
+
+//closes the public Timer window
+function closePublicTimerWindow() {
+
+    if (publicTimerWindow) {
+        publicTimerWindow.close();
+        publicTWF = false;
+        $('#closePublic').attr('disabled','disabled');
+        $('#openPublic').removeAttr("disabled");
+    }
+}
+
+//ToDo
+function clear() {
+
+/*    //refresh/reset page
+    location.reload();*/
 }
