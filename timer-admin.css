@@ -1,13 +1,13 @@
 #consoleBox {
-    width: 500px;
-    height: 500px;
+    width: 750px;
+    height: 600px;
     text-align: center;
 }
 #consoleBox table {
     width: 100%;
 }
 #consoleBox {
-    border: 1px solid black;
+    border: 5px solid black;
 }
 #consoleBox table,
 #consoleBox th,
@@ -18,6 +18,16 @@
     padding: 10px;
     width: 25%;
 }
+#box_green, #box_orange, #box_red {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+}
+#colorDivs div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #A, #A1, #A2 {
     font-weight: bold;
 }

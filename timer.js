@@ -15,11 +15,13 @@ var secondsRemaining;
 var intervalHandle;
 var publicTimerWindow;
 var publicTWF;
+var countD;
 
 //main - when document ready:
 $(document).ready(function() {
 
-    //initialize publicTWF flag to false
+    //initialize flags
+    countD = true;
     publicTWF = false;
 
     //call initializeButtonHandlers()
@@ -62,6 +64,9 @@ function startCountdown(){
         // how many seconds
         secondsRemaining = time * 60;
 
+        //change public timer's color to green
+        $('#timerBox').css( "background-color", "#99fe00" );
+
         //every second, call the "tick" function
         // have to make it into a variable so that you can stop the interval later!!!
         intervalHandle = setInterval(tick, 1000);
@@ -81,7 +86,7 @@ function pause() {
 function tick(){
 
     //inside the time limit
-    if (secondsRemaining > 0) {
+    if ((countD) && (secondsRemaining>0)) {
 
         //turn the seconds into mm:ss
         var min = Math.floor(secondsRemaining / 60);
@@ -101,22 +106,34 @@ function tick(){
         var message = min.toString() + ":" + sec;
 
         //subtract from seconds remaining
-        secondsRemaining--
-        console.log(secondsRemaining);
+        secondsRemaining--;
 
     //outside the time limit
-    } else if (secondsRemaining >= 0) {
+    } else {
+
+        countD = false;
+        /*$('#timerBox').css( "background-color", "#fd030d" );*/
+        /*publicTimerWindow.document.getElementById("timerBox").style.background_color = "blue";*/
 
         //turn the seconds into mm:ss
         var min = Math.floor(secondsRemaining / 60);
         var sec = secondsRemaining - (min * 60);
+
+        //add a leading zero for minutes
+        if (min < 10) {
+            min = "0" + min;
+        }
+
+        //add a leading zero for seconds
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
 
         //create "message"
         var message = min.toString() + ":" + sec;
 
         //add to seconds remaining
         secondsRemaining++;
-        console.log(secondsRemaining);
     }
 
     //update displays
@@ -126,15 +143,18 @@ function tick(){
 ////update displays in admin and public views
 function updateDisplays(updatedTime) {
 
-    //- in timer-admin
+    //- in timer admin
     $('#A').html(updatedTime);
 
-    //- in timer-public
+    //- in timer public
+    //change digits
     if (publicTimerWindow && publicTWF) {
         publicTimerWindow.document.getElementById("timer_public").textContent = updatedTime;
     }
-}
 
+    //change colors
+    decideColor();
+}
 
 //opens a new window showing the public Timer
 function openPublicTimerWindow() {
@@ -145,10 +165,10 @@ function openPublicTimerWindow() {
         publicTWF = true;
         $('#openPublic').attr('disabled','disabled');
         $('#closePublic').removeAttr("disabled");
+
     } else {
         return;
     }
-
     console.log("openPublicTimerWindow() run...");
 }
 
@@ -160,6 +180,16 @@ function closePublicTimerWindow() {
         publicTWF = false;
         $('#closePublic').attr('disabled','disabled');
         $('#openPublic').removeAttr("disabled");
+    }
+}
+
+//change public timer to the appropriate color
+function decideColor() {
+
+    if (countD) {
+        publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#99fe00';
+    } else if (!countD) {
+        publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#fd030d';
     }
 }
 
