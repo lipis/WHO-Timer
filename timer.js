@@ -1,71 +1,34 @@
 //Here is all the logic
 
+var t_time_req = 0;
+var s_time_req = 0;
 var secondsRemaining;
 var intervalHandle;
 var publicTimerWindow;
 var myTimer;
 
+//main - when document ready:
+$(document).ready(function() {
 
-function resetPage(){
+    //test1
+    console.log("auto:document ready");
 
-    document.getElementById("inputArea").style.display = "block";
-}
+    //call resetDashboards()
+    resetDashboards();
+    console.log("auto:resetDashboards() run");
 
-function tick(){
-    // grab the td with #timer_admin
-    /*var timer_public = document.getElementById("time");*/
-    /*var timer_admin = $('#timer_admin')*/;
+    //call createButtonHandlers()
+    createButtonHandlers();
+    console.log("auto:createButtonHandlers() run");
+});
 
-    // turn the seconds into mm:ss
-    var min = Math.floor(secondsRemaining / 60);
-    var sec = secondsRemaining - (min * 60);
-
-    //add a leading zero (as a string value) if seconds less than 10
-    if (sec < 10) {
-        sec = "0" + sec;
-    }
-
-    // concatenate with colon
-    var message = min.toString() + ":" + sec;
-
-    // now change the display
-
-    //in timer-admin
-    $('#timer_admin').html(message);
-
-    //in timer-public
-    publicTimerWindow.document.getElementById("timer_public").textContent = message;
-
-    /*publicTimerWindow.document.write("Bye!");*/
-    /*$('#timer_public').html("bzzz");*/
-
-
-
-    // stop is down to zero
-    if (secondsRemaining === 0){
-        console.log("Time is up...")
-        clearInterval(intervalHandle);
-        resetPage();
-    }
-
-    //subtract from seconds remaining
-    secondsRemaining--;
-
-}
-
+//start the timer in countdown mode
 function startCountdown(){
 
-    console.log("'Submit' pressed/StartCountdown() started...");
+    //reset timer
 
-    /*function resetPage(){
-        document.getElementById("inputArea").style.display = "block";
-    }*/
-
-    /*// get contents of the "minutes" text box
-    var minutes = document.getElementById("minutes").value;*/
-
-    var time = $('#testInput1').val();
-    console.log("testInput1: " + time);
+    //get time from t_time_req
+    var time = t_time_req;
 
     // check if not a number
     if (isNaN(time)){
@@ -80,8 +43,43 @@ function startCountdown(){
     // have to make it into a variable so that you can stop the interval later!!!
     intervalHandle = setInterval(tick, 1000);
     console.log("tick() run...");
+}
+
+//this is the core method used inside the timer itself
+function tick(){
+
+    //turn the seconds into mm:ss
+    var min = Math.floor(secondsRemaining / 60);
+    var sec = secondsRemaining - (min * 60);
+
+    //add a leading zero (as a string value) if seconds less than 10
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    //concatenate with colon
+    var message = min.toString() + ":" + sec;
+
+    //change the display
+    //- in timer-admin
+    $('#A').html(message);
+
+    //- in timer-public
+    /*publicTimerWindow.document.getElementById("timer_public").textContent = message;*/
+
+    //stop is down to zero
+    if (secondsRemaining === 0){
+
+        clearInterval(intervalHandle);
+
+    }
+
+    //subtract from seconds remaining
+    secondsRemaining--;
 
 }
+
+
 
 //opens a new window showing the public Timer
 function openPublicTimerWindow() {
@@ -96,18 +94,117 @@ function openPublicTimerWindow() {
 
 }
 
-$(document).ready(function() {
+//reset everything
+function clear() {
 
-    //test 1
-    console.log("auto:document ready...");
+    //refresh/reset page
+    location.reload();
 
-    //create event handler for PublicTimer button
+    //test
+    console.log("clear() run");
+}
+
+function resetDashboards() {
+
+    //- in timer-public, A
+    $('#A').html("00:00");
+
+    //- in timer-public, A1
+    $('#A1').html("00:00");
+
+    //- in timer-public, A2
+    $('#A2').html("00:00");
+
+    /*//- in timer-public
+    publicTimerWindow.document.getElementById("timer_public").textContent = message;*/
+}
+
+function createButtonHandlers() {
+
+    //create onclick() even handlers for all buttons:
+    //Total time UP
+    $('#b_t_up').attr('onclick', 'set_t_up()');
+
+    //Total time DOWN
+    $('#b_t_down').attr('onclick', 'set_t_down()');
+
+    //Sum-up time UP
+    $('#b_s_up').attr('onclick', 'set_s_up()');
+
+    //Sum-up time DOWN
+    $('#b_s_down').attr('onclick', 'set_t_down()');
+
+    //START button
+    $('#b_start').attr('onclick', 'startCountdown()');
+
+    //PAUSE button
+    /*$('#b_pause').attr('onclick', 'pause()');*/
+
+    //CLEAR button
+    $('#b_clear').attr('onclick', 'clear()');
+
+    //PublicTimer button
     $('#openPublic').attr('onclick', 'openPublicTimerWindow()');
-    console.log("auto:handler for OpenPublicTimer button added...");
+}
 
-    //create event handler for submit button
-    $('#testSubmitButton1').attr('onclick', 'startCountdown()');
-    console.log("auto:handler for Submit button added...")
+function set_t_up() {
 
+    //set total time up
+    t_time_req += 1;
 
-});
+    console.log(t_time_req);
+
+    //set A1 up
+    if (t_time_req < 10) {
+        $('#A1').html("0" + t_time_req + ":" + "00");
+    } else {
+        $('#A1').html(t_time_req + ":" + "00");
+    }
+}
+
+function set_t_down() {
+
+    //set total time down
+    if (t_time_req > 0) {
+        t_time_req -= 1;
+    }
+    console.log(t_time_req);
+
+    //set A1 down
+    if (t_time_req < 10) {
+        $('#A1').html("0" + t_time_req + ":" + "00");
+    } else {
+        $('#A1').html(t_time_req + ":" + "00");
+    }
+}
+
+function set_s_up() {
+
+    //set sum-up time up
+    s_time_req += 1;
+
+    console.log(s_time_req);
+
+    //set A2 up
+    if (s_time_req < 10) {
+        $('#A2').html("0" + s_time_req + ":" + "00");
+    } else {
+        $('#A2').html(s_time_req + ":" + "00");
+    }
+}
+
+function set_t_down() {
+
+    //set sum-up time down
+    if (s_time_req > 0) {
+        s_time_req -= 1;
+    }
+    console.log(s_time_req);
+
+    //set A2 down
+    if (s_time_req < 10) {
+        $('#A2').html("0" + s_time_req + ":" + "00");
+    } else {
+        $('#A2').html(s_time_req + ":" + "00");
+    }
+}
