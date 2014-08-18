@@ -1,7 +1,11 @@
 //ToDo:
+//PRIORITY I:----------------------------------------|
+//*Start public window automatically/ask user to open for him if not open/fix bug in public timer when REPEAT runs
 //*Implement normal count
 //*Implement CLEAR
-//*Implement REPEAT
+
+//PRIORITY II:---------------------------------------|
+//*fix tick's one second delay when it starts
 //*Increase and decrease timer live
 //*Make Start and Pause one button
 //*Use colours for admin layout
@@ -11,7 +15,6 @@
 
 
 //Here is all the logic
-
 //total time requested
 var t_time_req;
 //sum-up time requested
@@ -36,9 +39,7 @@ $(document).ready(function() {
     initializeButtonHandlers();
 
     //initialize flags
-    countMode = 0;
-    publicTWF = false;
-    pauseOn = false;
+    initializeFlags();
 
     //reset total and sum-up requested time
     t_time_req = 0;
@@ -54,7 +55,7 @@ $(document).ready(function() {
     }
 });
 
-//button handler initialization and helper functions
+//initialize button handlers
 function initializeButtonHandlers() {
 
     //create onclick() even handlers for all buttons:
@@ -85,6 +86,14 @@ function initializeButtonHandlers() {
         disabled: 'disabled()'
     });
 }
+//initialize flags
+function initializeFlags() {
+
+    countMode = 0;
+    publicTWF = false;
+    pauseOn = false;
+}
+//initialize button handler onclick functions
 function set_t_up() {
 
     //set total time up
@@ -166,6 +175,9 @@ function startCountdown(){
     } else {
         //call the "tick" function every second
         intervalHandle = setInterval(tick, 1000);
+
+        //switch pauseOn from true to false
+        pauseOn = false;
 
         //enable/disable START and PAUSE buttons
         $('#b_start').attr('disabled','disabled');
@@ -255,7 +267,7 @@ function updateDisplays(time_fd) {
     $('#A').html(time_fd);
 
     //- in timer public
-    if (publicTimerWindow && publicTWF) {
+    if (publicTimerWindow) {
         publicTimerWindow.document.getElementById("timer_public").textContent = time_fd;
     }
 }
@@ -264,10 +276,20 @@ function updateDisplays(time_fd) {
 function paintTrafficLights() {
 
     countMode_sec = evalcms(time_t_sec, time_s_sec);
-    console.log(countMode_sec);
 
-    //if (TotalTime < 'currentTick' < Sum-upTime)
-    if ((time_t_sec > 0) && (countMode_sec >= 0) && (countMode != 3)) {
+    //if on reset
+    if (countMode == 0 ) {
+        //in public
+        if (publicTimerWindow) {
+            publicTimerWindow.document.getElementById("timerBox").style.color = 'white';
+        }
+        //in admin
+        document.getElementById("box_green").style.backgroundColor = 'white';
+        document.getElementById("box_orange").style.backgroundColor = 'white';
+        document.getElementById("box_red").style.backgroundColor = 'white';
+
+        //else if (TotalTime < 'currentTick' < Sum-upTime)
+    } else if ((time_t_sec > 0) && (countMode_sec >= 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
             publicTimerWindow.document.getElementById("timerBox").style.color = '#99fe00';
@@ -275,7 +297,7 @@ function paintTrafficLights() {
         //in admin
         document.getElementById("box_green").style.backgroundColor = '#99fe00';
         document.getElementById("box_orange").style.backgroundColor = 'white';
-        document.getElementById("box_red").style.backgroundColor = 'white'
+        document.getElementById("box_red").style.backgroundColor = 'white';
 
         //else if (Sum-upTime < 'currentTick' < 0)
     } else if ((time_t_sec > 0) && (countMode_sec < 0) && (countMode != 3)) {
@@ -311,9 +333,6 @@ function evalcms(time_t_sec, time_s_sec) {
 //opens a new window showing the public Timer
 function openPublicTimerWindow() {
 
-    //name the parent window - this is needed in order to switch the focus back to it later
-
-
     //if public timer window already open, do nothing
     if (!publicTWF) {
         publicTimerWindow = window.open("timer-public.html", "publicTimerWin")
@@ -336,12 +355,44 @@ function closePublicTimerWindow() {
 
 function repeat() {
 
+    //stop counter
+    clearInterval(intervalHandle);
+
+    //reset flags to initial state
+    initializeFlags();
+
     //get time in seconds
     time_t_sec = t_time_req * 60;
     time_s_sec = s_time_req *60;
 
-    updateDisplays(time_t_sec);
+    //turn the seconds into mm:ss
+    var min = Math.floor(time_t_sec / 60);
+    var sec = time_t_sec - (min * 60);
+
+    //add a leading zero for minutes
+    if (min < 10) {
+        min = "0" + min;
+    }
+
+    //add a leading zero for seconds
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    //create "time_forDisplay"
+    var time_forDisplay = min.toString() + ":" + sec;
+
+    //update dashboards
+    updateDisplays(time_forDisplay);
+
+    //update the display traffic light colors
+    paintTrafficLights();
+
+    //manipulate buttons
+    $('#b_pause').attr('disabled','disabled');
+    $('#b_start').removeAttr("disabled");
 }
+
 //ToDo
 function clear() {
 
