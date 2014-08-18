@@ -1,7 +1,14 @@
 #timerBox {
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
     width: 500px;
     height: 500px;
     text-align: center;
+    background-color: white;
+    /*background-color: #99fe00;*/
+    /*background-color: #f4d75f;*/
+    /*background-color: #fd030d;*/
 }
 #timerBox {
     border: 1px solid black;
