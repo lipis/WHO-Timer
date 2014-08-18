@@ -1,11 +1,11 @@
 //ToDo:
 //*Implement normal count
-//*Implement PAUSE
 //*Implement CLEAR
 //*Implement REPEAT
 //*Increase and decrease timer live
 //*Make Start and Pause one button
-//*Use colours for layout
+//*Use colours for admin layout
+//*Show total time when stopped
 //*Reset public timer when page resets
 //*Focus back to admin when opening new public timer
 
@@ -26,6 +26,8 @@ var publicTimerWindow;
 var publicTWF;
 //countMode flag can be: 0(timer on initial state or reset), 1(timer on countDown and on "green"), 2(timer on "orange"), 3(timer on "red")
 var countMode;
+//pauseOn flag checks if timer has been paused
+var pauseOn;
 
 //main - when document ready:
 $(document).ready(function() {
@@ -36,6 +38,7 @@ $(document).ready(function() {
     //initialize flags
     countMode = 0;
     publicTWF = false;
+    pauseOn = false;
 
     //reset total and sum-up requested time
     t_time_req = 0;
@@ -57,31 +60,25 @@ function initializeButtonHandlers() {
     //create onclick() even handlers for all buttons:
     //Total time UP
     $('#b_t_up').attr('onclick', 'set_t_up()');
-
     //Total time DOWN
     $('#b_t_down').attr('onclick', 'set_t_down()');
-
     //Sum-up time UP
     $('#b_s_up').attr('onclick', 'set_s_up()');
-
     //Sum-up time DOWN
     $('#b_s_down').attr('onclick', 'set_s_down()');
-
     //START button
     $('#b_start').attr('onclick', 'startCountdown()');
-
     //PAUSE button
     $('#b_pause').attr({
         onclick: 'pause()',
         disabled: 'disabled()'
     });
-
+    //REPEAT button
+    $('#b_repeat').attr('onclick', 'repeat()');
     //CLEAR button
     $('#b_clear').attr('onclick', 'clear()');
-
     //PublicTimer open button
     $('#openPublic').attr('onclick', 'openPublicTimerWindow()');
-
     //PublicTimer close button
     $('#closePublic').attr({
         onclick: 'closePublicTimerWindow()',
@@ -148,28 +145,45 @@ function set_s_down() {
 //start the timer
 function startCountdown(){
 
-    if (t_time_req > 0) {
+    if (!pauseOn) {
 
-        //get time in seconds
-        time_t_sec = t_time_req * 60;
-        time_s_sec = s_time_req *60;
+        if (t_time_req > 0) {
 
+            //get time in seconds
+            time_t_sec = t_time_req * 60;
+            time_s_sec = s_time_req *60;
+
+            //call the "tick" function every second
+            intervalHandle = setInterval(tick, 1000);
+
+            //enable/disable START and PAUSE buttons
+            $('#b_start').attr('disabled','disabled');
+            $('#b_pause').removeAttr("disabled");
+
+            //switch countMode from 0 to 1
+            countMode = 1;
+        }
+    } else {
         //call the "tick" function every second
         intervalHandle = setInterval(tick, 1000);
 
         //enable/disable START and PAUSE buttons
         $('#b_start').attr('disabled','disabled');
         $('#b_pause').removeAttr("disabled");
-
-        //switch countMode from 0 to 1
-        countMode = 1;
     }
 }
 
-//ToDo
+//pause function
 function pause() {
 
-    /*clearInterval(intervalHandle);*/
+    //stop counter
+    clearInterval(intervalHandle);
+
+    //manipulate buttons
+    $('#b_pause').attr('disabled','disabled');
+    $('#b_start').removeAttr("disabled");
+
+    pauseOn = true;
 }
 
 //this is the core timer function
@@ -320,6 +334,14 @@ function closePublicTimerWindow() {
     }
 }
 
+function repeat() {
+
+    //get time in seconds
+    time_t_sec = t_time_req * 60;
+    time_s_sec = s_time_req *60;
+
+    updateDisplays(time_t_sec);
+}
 //ToDo
 function clear() {
 
