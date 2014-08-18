@@ -1,5 +1,5 @@
 #consoleBox {
-    width: 750px;
+    width: 500px;
     height: 600px;
     text-align: center;
 }
@@ -15,7 +15,7 @@
     border: 1px solid black;
 }
 #consoleBox td {
-    padding: 10px;
+    padding: 5px;
     width: 25%;
 }
 #box_green, #box_orange, #box_red {
@@ -35,8 +35,30 @@
 #A {
     font-size: 50px;
 }
-
-
+#A1, #A2 {
+    font-size: 25px;
+}
+#consoleBox #b_t_up, #b_t_down, #b_s_up, #b_s_down {
+    width: 75px;
+    height: 75px;
+}
+#consoleBox #b_start, #b_pause, #b_repeat {
+    width: 100px;
+    height: 100px;
+}
+#consoleBox #openPublic, #closePublic {
+    width: 150px;
+    height: 25px;
+}
+#colorDivs {
+    border-collapse: collapse;
+}
+#consoleBox table {
+    border-collapse: collapse;
+}
+#consoleBox {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
 
@@ -50,5 +72,5 @@
 
 
 #template {
-    padding-top: 100px;
+    padding-top: 200px;
 }

@@ -10,9 +10,14 @@
 <body>
     <div id="container">
 		<div id="consoleBox">
-			<h1>WHO-Timer</h1>
-			<h2>Admin Console</h2>
         	<table class="console">
+                <tr><td></td><td></td><td></td><td></td></tr>
+                <tr>
+                    <td colspan="4">
+                        <h2>WHO-Timer</h2>
+                        <h3>Admin Console</h3>
+                    </td>
+                </tr>
 				<tr>
 					<td colspan="4">
 						<table id="colorDivs">
@@ -28,43 +33,52 @@
 					<td colspan="4"><span id="A">00:00</span></td>
 				</tr>
 				<tr>
-					<td colspan="2"><span id="A1">00:00</span></td>
-					<td colspan="2"><span id="A2">00:00</span></td>
-				</tr>
-				<tr>
 					<td colspan="2">
-						<h3>TOTAL TIME</h3>
-						<button id="b_t_up">UP</button>
-						<button id="b_t_down">DOWN</button>
-					</td>
+                        <span id="A1">00:00</span>
+                    </td>
 					<td colspan="2">
-						<h4>SUM-UP TIME</h4>
-						<button id="b_s_up">UP</button>
-						<button id="b_s_down">DOWN</button>
-					</td>
+                        <span id="A2">00:00</span>
+                    </td>
 				</tr>
+                <tr>
+                    <td colspan="2">TOTAL TIME</td>
+                    <td colspan="2">SUM-UP TIME</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button id="b_t_up">UP</button>
+                        <button id="b_t_down">DOWN</button>
+                    </td>
+                    <td colspan="2">
+                        <button id="b_s_up">UP</button>
+                        <button id="b_s_down">DOWN</button>
+                    </td>
+                </tr>
 				<tr>
-					<td colspan="4">
+					<td colspan="3">
 						<button id="b_start">START</button>
 						<button id="b_pause">PAUSE</button>
+                    </td>
+                    <td colspan="1">
+                        <button id="b_repeat">REPEAT</button>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4">
-						<button id="b_clear">CLEAR</button>
-					</td>
-				</tr>
-				<tr>
+                    <td colspan="1">
+                        <button id="b_clear">CLEAR</button>
+                    </td>
 					<td colspan="4">
 						<button id="openPublic">Open public Timer</button>
 						<button id="closePublic">Close public Timer</button>
 					</td>
 				</tr>
+                <tr><td colspan="4"></td></tr>
+                <tr><td></td><td></td><td></td><td></td></tr>
 			</table>
 		</div>
     </div>
-	<!--<div id="template">
+	<div id="template">
 		<img src="images/originals/LimitimerControl_small.jpg">
-	</div>-->
+	</div>
 </body>
 </html>

@@ -1,11 +1,12 @@
 //ToDo:
+//*Implement normal count
 //*Implement PAUSE
-//*Implement CLEAR, but make it small and 'hide' it
+//*Implement CLEAR
 //*Implement REPEAT
-//*Reset public timer when page resets
 //*Increase and decrease timer live
-//*Focus back to admin when opening new public timer
 //*Make Start and Pause one button
+//*Reset public timer when page resets
+//*Focus back to admin when opening new public timer
 
 
 //Here is all the logic
