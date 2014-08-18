@@ -5,6 +5,7 @@
 //*Implement REPEAT
 //*Increase and decrease timer live
 //*Make Start and Pause one button
+//*Use colours for layout
 //*Reset public timer when page resets
 //*Focus back to admin when opening new public timer
 
@@ -255,7 +256,7 @@ function paintTrafficLights() {
     if ((time_t_sec > 0) && (countMode_sec >= 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#99fe00';
+            publicTimerWindow.document.getElementById("timerBox").style.color = '#99fe00';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = '#99fe00';
@@ -266,7 +267,7 @@ function paintTrafficLights() {
     } else if ((time_t_sec > 0) && (countMode_sec < 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#f4d75f';
+            publicTimerWindow.document.getElementById("timerBox").style.color = '#f4d75f';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -277,7 +278,7 @@ function paintTrafficLights() {
     } else if (countMode == 3) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.backgroundColor = '#fd030d';
+            publicTimerWindow.document.getElementById("timerBox").style.color = '#fd030d';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';

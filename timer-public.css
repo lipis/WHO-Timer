@@ -1,23 +1,94 @@
-#timerBox {
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
+/*#container {
+    background-color: pink;
+    border: 1px solid black;
     width: 500px;
-    height: 500px;
+}
+#timerBox {
+    position: fixed;
+    border: 1px solid black;
+    bottom: 0px;
+    left: 0;
+    font-size: 200px;
+    background-color: yellow;
+    *//*background-color: #99fe00;*//*
+    *//*background-color: #f4d75f;*//*
+    *//*background-color: #fd030d;*//*
+    height: 35%;
+    width: 50%
+    *//*margin-left: auto;*//*
+    *//*margin-right: auto;*//*
+}
+#timerBox td {
     text-align: center;
-    background-color: white;
-    /*background-color: #99fe00;*/
-    /*background-color: #f4d75f;*/
-    /*background-color: #fd030d;*/
+}
+#countryBox {
+    position: fixed;
+    border: 1px solid black;
+    bottom: 0px;
+    right: 0;
+
+    background-color: green;
+    height: 35%;
+    width: 50%
+}*/
+#container {
+    border: 1px solid black;
+    /*background-color: pink;*/
+    position: relative;
+    width: 1200px;
+    height: 1000px;
+}
+#stripeBox {
+    border: 1px solid black;
+    /*background-color: purple;*/
+    position: absolute;
+    width: 1200px;
+    height: 400px;
+    bottom: 0;
+    left: 0;
+}
+#cornerBox {
+    border: 1px solid black;
+    /*background-color: yellow;*/
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    bottom: 0px;
+    left: 0px;
 }
 #timerBox {
     border: 1px solid black;
-}
-#timerBox {
-    font-size: 200px;
+    /*background-color: red;*/
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    bottom: 200px;
+    left: 0px;
 }
 #timerBox table {
-    width: 100%;
-    height: 100%;
-    text-align: center;
+    /*background-color: grey;*/
+    margin-left: 60px;
 }
+#countryBox {
+    border: 1px solid black;
+    /*background-color: blue;*/
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    bottom: 0px;
+    left: 0px;
+}
+#countryBox table {
+    /*background-color: brown;*/
+    margin-left: 60px;
+    margin-top: 50px;
+}
+#spain {
+    font-size: 100px;
+}
+#timer_public {
+    /*border: 1px solid black;*/
+    /*background-color: darkgreen;*/
+    font-size: 180px;
+}
+
