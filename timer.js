@@ -3,15 +3,20 @@
 //*Start public window automatically/ask user to open for him if not open/fix bug in public timer when REPEAT runs
 //*Implement normal count
 //*Implement CLEAR
+//*List of speakers
 
 //PRIORITY II:---------------------------------------|
-//*fix tick's one second delay when it starts
+//*Progress bar for public
+//*Fix tick's one second delay when it starts
 //*Increase and decrease timer live
 //*Make Start and Pause one button
-//*Use colours for admin layout
+//*Use colours for admin layout/simulate Limitimer?
 //*Show total time when stopped
 //*Reset public timer when page resets
 //*Focus back to admin when opening new public timer
+//*Admin keyboard shortcuts
+//*Chair admin page
+
 
 
 //Here is all the logic
