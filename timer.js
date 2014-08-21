@@ -1,6 +1,8 @@
 //ToDo:
 //PRIORITY I:----------------------------------------|
-//*Start public window automatically/ask user to open for him if not open/fix bug in public timer when REPEAT runs
+//*David-design the public interface
+//*Try a "relative" positioning design for the public interface
+//*Start public window automatically/ask user to open for him if not open
 //*Implement normal count
 //*Implement CLEAR
 //*List of speakers
@@ -16,7 +18,6 @@
 //*Focus back to admin when opening new public timer
 //*Admin keyboard shortcuts
 //*Chair admin page
-
 
 
 //Here is all the logic
@@ -286,7 +287,7 @@ function paintTrafficLights() {
     if (countMode == 0 ) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.color = 'white';
+            publicTimerWindow.document.getElementById("box_timer").style.color = 'black';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -297,7 +298,7 @@ function paintTrafficLights() {
     } else if ((time_t_sec > 0) && (countMode_sec >= 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.color = '#99fe00';
+            publicTimerWindow.document.getElementById("box_timer").style.color = '#99fe00';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = '#99fe00';
@@ -308,7 +309,7 @@ function paintTrafficLights() {
     } else if ((time_t_sec > 0) && (countMode_sec < 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.color = '#f4d75f';
+            publicTimerWindow.document.getElementById("box_timer").style.color = '#f4d75f';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -319,7 +320,7 @@ function paintTrafficLights() {
     } else if (countMode == 3) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timerBox").style.color = '#fd030d';
+            publicTimerWindow.document.getElementById("box_timer").style.color = '#fd030d';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';

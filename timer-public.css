@@ -1,62 +1,60 @@
-
+/*In absolute positioning for FHD (1920x1080)*/
 #container {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     /*background-color: pink;*/
     position: relative;
-    width: 1200px;
-    height: 1000px;
+    width: 1920px;
+    height: 1080px;
 }
-#stripeBox {
-    border: 1px solid black;
-    /*background-color: purple;*/
-    position: absolute;
-    width: 1200px;
-    height: 400px;
-    bottom: 0;
-    left: 0;
-}
-#cornerBox {
-    border: 1px solid black;
+#box_bottomLeft {
+    /*border: 1px solid black;*/
     /*background-color: yellow;*/
     position: absolute;
-    width: 600px;
-    height: 400px;
+    width: 660px;
+    height: 324px;
     bottom: 0px;
     left: 0px;
 }
-#timerBox {
-    border: 1px solid black;
+#box_timer {
+    /*border: 1px solid black;*/
     /*background-color: red;*/
     position: absolute;
-    width: 600px;
-    height: 200px;
-    bottom: 200px;
+    width: 660px;
+    height: 162px;
+    bottom: 162px;
     left: 0px;
 }
-#timerBox table {
+#box_timer table {
     /*background-color: grey;*/
     margin-left: 60px;
 }
-#countryBox {
-    border: 1px solid black;
+#box_country {
+    /*border: 1px solid black;*/
     /*background-color: blue;*/
     position: absolute;
-    width: 600px;
-    height: 200px;
+    width: 660px;
+    height: 162px;
     bottom: 0px;
     left: 0px;
 }
-#countryBox table {
+#box_country table {
+    /*border: 1px solid black;*/
     /*background-color: brown;*/
+    width: 600px;
+    height: 162px;
     margin-left: 60px;
-    margin-top: 50px;
+    vertical-align: middle;
 }
-#spain {
-    font-size: 100px;
+#box_country table td {
+    vertical-align: middle;
+}
+#country_name {
+    margin-left: 20px;
+    font-size: 90px;
 }
 #timer_public {
     /*border: 1px solid black;*/
     /*background-color: darkgreen;*/
-    font-size: 180px;
+    font-size: 162px;
 }
 
