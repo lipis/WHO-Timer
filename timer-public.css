@@ -1,7 +1,8 @@
 /*In absolute positioning for FHD (1920x1080)*/
 #container {
     /*border: 1px solid black;*/
-    /*background-color: pink;*/
+    /*background-color: #00558f;*//*(WHO public website blue)*/
+    background-color: #00365b; /*(WHO public website blue-darker)*/
     position: relative;
     width: 1920px;
     height: 1080px;
@@ -49,12 +50,14 @@
     vertical-align: middle;
 }
 #country_name {
+    color: white;
     margin-left: 20px;
     font-size: 90px;
 }
 #timer_public {
     /*border: 1px solid black;*/
     /*background-color: darkgreen;*/
+    color: red;
     font-size: 162px;
 }
 
