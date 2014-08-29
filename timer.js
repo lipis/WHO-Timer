@@ -66,95 +66,95 @@ function initializeButtonHandlers() {
 
     //create onclick() even handlers for all buttons:
     //Total time UP
-    $('#b_t_up').attr('onclick', 'set_t_up()');
+    $("#b_t_up").click(function(){
+        //set total time up
+        if (t_time_req < 99) {
+            t_time_req += 1;
+
+            //set A1 up
+            if (t_time_req < 10) {
+                $('#A1').html("0" + t_time_req + ":" + "00");
+            } else {
+                $('#A1').html(t_time_req + ":" + "00");
+            }
+        }
+    });
     //Total time DOWN
-    $('#b_t_down').attr('onclick', 'set_t_down()');
+    $('#b_t_down').click(function(){
+        //set total time down
+        if (t_time_req > 0 && t_time_req > s_time_req) {
+            t_time_req -= 1;
+
+            //set A1 down
+            if (t_time_req < 10) {
+                $('#A1').html("0" + t_time_req + ":" + "00");
+            } else {
+                $('#A1').html(t_time_req + ":" + "00");
+            }
+        }
+    });
     //Sum-up time UP
-    $('#b_s_up').attr('onclick', 'set_s_up()');
+    $('#b_s_up').click(function(){
+        //set sum-up time up
+        if (s_time_req < t_time_req) {
+            s_time_req += 1;
+
+            //set A2 up
+            if (s_time_req < 10) {
+                $('#A2').html("0" + s_time_req + ":" + "00");
+            } else {
+                $('#A2').html(s_time_req + ":" + "00");
+            }
+        }
+    });
     //Sum-up time DOWN
-    $('#b_s_down').attr('onclick', 'set_s_down()');
+    $('#b_s_down').click(function(){
+        //set sum-up time down
+        if (s_time_req > 0) {
+            s_time_req -= 1;
+
+            //set A2 down
+            if (s_time_req < 10) {
+                $('#A2').html("0" + s_time_req + ":" + "00");
+            } else {
+                $('#A2').html(s_time_req + ":" + "00");
+            }
+        }
+    });
     //START button
-    $('#b_start').attr('onclick', 'startCountdown()');
+    $('#b_start').click(function(){
+        startCountdown();
+    });
     //PAUSE button
     $('#b_pause').attr({
         onclick: 'pause()',
         disabled: 'disabled()'
     });
     //REPEAT button
-    $('#b_repeat').attr('onclick', 'repeat()');
+    $('#b_repeat').click(function(){
+        repeat();
+    });
     //CLEAR button
-    $('#b_clear').attr('onclick', 'clear()');
+    $('#b_clear').click(function(){
+        clear();
+    });
     //PublicTimer open button
-    $('#openPublic').attr('onclick', 'openPublicTimerWindow()');
+    $('#openPublic').click(function(){
+        openPublicTimerWindow();
+    });
     //PublicTimer close button
     $('#closePublic').attr({
         onclick: 'closePublicTimerWindow()',
         disabled: 'disabled()'
     });
 }
+
 //initialize flags
 function initializeFlags() {
 
     countMode = 0;
     publicTWF = false;
     pauseOn = false;
-}
-//initialize button handler onclick functions
-function set_t_up() {
-
-    //set total time up
-    if (t_time_req < 99) {
-        t_time_req += 1;
-
-        //set A1 up
-        if (t_time_req < 10) {
-            $('#A1').html("0" + t_time_req + ":" + "00");
-        } else {
-            $('#A1').html(t_time_req + ":" + "00");
-        }
-    }
-}
-function set_t_down() {
-
-    //set total time down
-    if (t_time_req > 0 && t_time_req > s_time_req) {
-        t_time_req -= 1;
-
-        //set A1 down
-        if (t_time_req < 10) {
-            $('#A1').html("0" + t_time_req + ":" + "00");
-        } else {
-            $('#A1').html(t_time_req + ":" + "00");
-        }
-    }
-}
-function set_s_up() {
-
-    //set sum-up time up
-    if (s_time_req < t_time_req) {
-        s_time_req += 1;
-
-        //set A2 up
-        if (s_time_req < 10) {
-            $('#A2').html("0" + s_time_req + ":" + "00");
-        } else {
-            $('#A2').html(s_time_req + ":" + "00");
-        }
-    }
-}
-function set_s_down() {
-
-    //set sum-up time down
-    if (s_time_req > 0) {
-        s_time_req -= 1;
-
-        //set A2 down
-        if (s_time_req < 10) {
-            $('#A2').html("0" + s_time_req + ":" + "00");
-        } else {
-            $('#A2').html(s_time_req + ":" + "00");
-        }
-    }
 }
 
 //start the timer
@@ -257,8 +257,7 @@ function tick(){
         time_t_sec++;
     }
 
-    //Do the following in each 'tick':
-
+    //Do the following on each 'tick':
     //update the display digits
     updateDisplays(time_forDisplay);
 
@@ -341,7 +340,7 @@ function openPublicTimerWindow() {
 
     //if public timer window already open, do nothing
     if (!publicTWF) {
-        publicTimerWindow = window.open("timer-public.html", "publicTimerWin")
+        publicTimerWindow = window.open("timer-public.html", "publicTimerWin", "scrollbars=0, fullscreen=1, channelmode=1");
         publicTWF = true;
         $('#openPublic').attr('disabled','disabled');
         $('#closePublic').removeAttr("disabled");
