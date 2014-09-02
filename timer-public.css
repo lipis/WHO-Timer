@@ -18,7 +18,17 @@
 }
 #box_speakerList {
     position: absolute;
-    width: 
+    width: 640px;
+    height: 1080px;
+    top: 0px;
+    left: 1280px;
+    color: white;
+}
+#box_speakerList h1 {
+    font-size: 40px;
+}
+#box_speakerList p {
+    font-size: 30px;
 }
 
 #box_timer {
@@ -53,6 +63,16 @@
 }
 #box_country table td {
     vertical-align: middle;
+}
+#box_speakerList table {
+    width: 330px;
+    height: 56px;
+}
+#box_speakerList table td {
+    vertical-align: middle;
+}
+#box_speakerList {
+    font-size: 45px;
 }
 #country_name {
     color: white;
