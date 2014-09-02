@@ -286,7 +286,7 @@ function paintTrafficLights() {
     if (countMode == 0 ) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("box_timer").style.color = 'black';
+            publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -297,7 +297,7 @@ function paintTrafficLights() {
     } else if ((time_t_sec > 0) && (countMode_sec >= 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("box_timer").style.color = '#99fe00';
+            publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = '#99fe00';
@@ -308,7 +308,7 @@ function paintTrafficLights() {
     } else if ((time_t_sec > 0) && (countMode_sec < 0) && (countMode != 3)) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("box_timer").style.color = '#f4d75f';
+            publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -319,7 +319,7 @@ function paintTrafficLights() {
     } else if (countMode == 3) {
         //in public
         if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("box_timer").style.color = '#fd030d';
+            publicTimerWindow.document.getElementById("timer_public").style.color = '#fd030d';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
