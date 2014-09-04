@@ -1,91 +1,87 @@
 /*In absolute positioning for FHD (1920x1080)*/
 #container {
-    /*border: 1px solid black;*/
     /*background-color: #00558f;*//*(WHO public website blue)*/
     background-color: #00365b; /*(WHO public website blue-darker)*/
-    position: relative;
     width: 1920px;
     height: 1080px;
+    position: relative;
 }
-#box_middleLeft {
-    /*border: 1px solid black;*/
-    /*background-color: yellow;*/
+/*timerArea*/
+#timerArea {
     position: absolute;
-    width: 660px;
-    height: 324px;
-    top: 350px;
-    left: 500px;
-}
-#box_speakerList {
-    position: absolute;
-    width: 640px;
-    height: 1080px;
+    width: 1280px;
+    height: 864px;
     top: 0px;
-    left: 1280px;
-    color: white;
-}
-#box_speakerList h1 {
-    font-size: 40px;
-}
-#box_speakerList p {
-    font-size: 30px;
-}
-
-#box_timer {
-    /*border: 1px solid black;*/
-    /*background-color: red;*/
-    position: absolute;
-    width: 660px;
-    height: 162px;
-    bottom: 162px;
     left: 0px;
+    border: 1px solid white;
 }
-#box_timer table {
-    /*background-color: grey;*/
-    margin-left: 60px;
-}
-#box_country {
-    /*border: 1px solid black;*/
-    /*background-color: blue;*/
+#timerGroup {
     position: absolute;
-    width: 660px;
-    height: 162px;
-    bottom: 0px;
-    left: 0px;
-}
-#box_country table {
-    /*border: 1px solid black;*/
-    /*background-color: brown;*/
-    width: 600px;
-    height: 162px;
-    margin-left: 60px;
-    vertical-align: middle;
-}
-#box_country table td {
-    vertical-align: middle;
-}
-#box_speakerList table {
-    width: 330px;
-    height: 56px;
-}
-#box_speakerList table td {
-    vertical-align: middle;
-}
-#box_speakerList {
-    font-size: 45px;
-}
-#country_name {
-    color: white;
-    margin-left: 20px;
-    font-size: 90px;
+    width: 400px;
+    height: 320px;
+    top: 272px;
+    left: 440px;
 }
 #timer_public {
-    /*background-color: #99fe00;*//*(green)*/
-    /*background-color: #f4d75f;*//*(orange)*/
-    /*background-color: #fd030d;*//*(red)*/
-    /*border: 1px solid black;*/
-    color: white;
     font-size: 162px;
-    /*background-color: darkgreen;*/
-
+    color: white;
+    /*background-color: #99fe00;*//**//*(green)*/
+    /*background-color: #f4d75f;*//**//*(orange)*/
+    /*background-color: #fd030d;*//**//*(red)*/
+}
+#country_name {
+    font-size: 90px;
+    color: white;
+    margin-left: 20px;
+}
+/*speakerArea*/
+#speakerArea {
+    position: absolute;
+    width: 640px;
+    height: 864px;
+    top: 0px;
+    right: 0px;
+    border: 1px solid white;
+}
+#speakerArea h1 {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+#listOfCountries {
+    margin-top: 100px;
+    margin-left: 150px;
+    color: white;
+    font-size: 30px;
+}
+/*logoArea*/
+#logoArea {
+    position: absolute;
+    width: 1920px;
+    height: 216px;/*(1080/5, or the bottom 1/5 of the window)*/
+    bottom: 0px;
+    left: 0px;
+    /*background-color: brown;*/
+}
+#en, #ru, #fr, #ge {
+   float: left;
+   width: 25%;
+   height: 216px;
+    position: relative;
+}
+#en img {
+    height: 175px;
+    position: absolute;
+}
+#ru img {
+    height: 175px;
+    position: absolute;
+}
+#fr img {
+    height: 175px;
+    position: absolute;
+}
+#ge img {
+    height: 175px;
+    position: absolute;
 }
