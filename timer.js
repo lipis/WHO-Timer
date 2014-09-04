@@ -1,11 +1,11 @@
 //ToDo:
 //PRIORITY I:----------------------------------------|
-//*David-design the public interface
-//*Try a "relative" positioning design for the public interface
-//*Start public window automatically/ask user to open for him if not open
-//*Implement normal count
-//*Implement CLEAR
 //*List of speakers
+//*Implement normal count
+//*Fix window permission problem
+//*Start public window automatically/ask user to open for him if not open
+//*Implement CLEAR
+//*Refactor timer.js
 
 //PRIORITY II:---------------------------------------|
 //*Progress bar for public
