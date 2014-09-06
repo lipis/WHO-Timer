@@ -19,13 +19,13 @@
 
 
 //constructor - 'class': timer
-function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, internalHandle,
+function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, intervalHandle,
                publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn, resetString) {
     this.totalTimeRequested = totalTimeRequested;
     this.sumupTimeRequested = sumupTimeRequested;
     this.currentTotalSeconds = currentTotalSeconds;
     this.sumupSeconds = sumupSeconds;
-    this.internalHandle = internalHandle;
+    this.intervalHandle = intervalHandle;
     this.publicTimerWindow = publicTimerWindow;
     this.publicTimerWindowOpen = publicTimerWindowOpen;
     this.timerMode = timerMode;
@@ -92,7 +92,7 @@ Timer.prototype.initializeButtonHandlers = function(){
     });
     //CLEAR button
     $('#b_clear').click(function () {
-        clear();
+        myTimer.clear();
     });
     //PublicTimer open button
     $('#openPublic').click(function () {
@@ -317,7 +317,7 @@ Timer.prototype.repeat = function() {
 Timer.prototype.clear = function() {
     //ToDo
     //refresh/reset page
-    //location.reload();
+    location.reload();
 };
 
 //main - when document ready:
