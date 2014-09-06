@@ -1,11 +1,11 @@
 //ToDo:
 //PRIORITY I:----------------------------------------|
+//*Refactor timer.js
 //*List of speakers
 //*Implement normal count
 //*Fix window permission problem
 //*Start public window automatically/ask user to open for him if not open
 //*Implement CLEAR
-//*Refactor timer.js
 
 //PRIORITY II:---------------------------------------|
 //*Progress bar for public
@@ -20,24 +20,7 @@
 //*Chair admin page
 
 
-/*//total time requested
-var totalTimeRequested;
-//sum-up time requested
-var sumupTimeRequested;
-//current total seconds
-var currentTotalSeconds;
-//sum-up seconds (this is a constant)
-var sumupSeconds;
-var intervalHandle;
-var publicTimerWindow;
-//public Timer Window flag signals if there is an open Public Timer window
-var publicTimerWindowOpen;
-//timerMode flag can be: 0(timer on initial state or reset), 1(timer on countDown and on "green"), 2(timer on "orange"), 3(timer on "red")
-var timerMode;
-//pauseOn flag checks if timer has been paused
-var pauseOn;*/
-
-//constructor for objects of the class 'timer'
+//constructor of the 'class' "timer"
 function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, internalHandle,
                publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn, resetString) {
     this.totalTimeRequested = totalTimeRequested;
@@ -51,7 +34,7 @@ function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumu
     this.pauseOn = pauseOn;
 }
 
-// Add a couple of methods to Person.prototype
+// 'class' methods
 Timer.prototype.initializeButtonHandlers = function(){
 
     //create onclick() even handlers for all buttons:
@@ -97,11 +80,11 @@ Timer.prototype.initializeButtonHandlers = function(){
     });
     //START button
     $('#b_start').click(function () {
-        startCountdown();
+        myTimer.startCountdown();
     });
     //PAUSE button
     $('#b_pause').attr({
-        onclick: 'pause()',
+        onclick: 'myTimer.pause()',
         disabled: 'disabled()'
     });
     //REPEAT button
@@ -122,7 +105,6 @@ Timer.prototype.initializeButtonHandlers = function(){
         disabled: 'disabled()'
     });
 };
-
 Timer.prototype.formatDisplay = function(display, time) {
 
     if (time < 10) {
@@ -131,27 +113,7 @@ Timer.prototype.formatDisplay = function(display, time) {
         $('#'+display).html(time + ":" + "00");
     }
 };
-
-//main - when document ready:
-$(document).ready(function() {
-
-    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0,0, 0, "00:00");
-    console.log(myTimer);
-
-    //initialize button handlers
-    myTimer.initializeButtonHandlers();
-
-    //reset dashboards: admin A, admin A1, admin A2, public
-    $('#A').html(myTimer.resetString);
-    $('#A1').html(myTimer.resetString);
-    $('#A2').html(myTimer.resetString);
-    if (myTimer.publicTimerWindowOpen) {
-        publicTimerWindow.document.getElementById("timer_public").textContent = myTimer.resetString;
-    }
-});
-
-//start the timer
-function startCountdown(){
+Timer.prototype.startCountdown = function() {
 
     if (!myTimer.pauseOn) {
 
@@ -182,10 +144,8 @@ function startCountdown(){
         $('#b_start').attr('disabled','disabled');
         $('#b_pause').removeAttr("disabled");
     }
-}
-
-//pause function
-function pause() {
+};
+Timer.prototype.pause = function() {
 
     //stop counter
     clearInterval(myTimer.intervalHandle);
@@ -195,7 +155,25 @@ function pause() {
     $('#b_start').removeAttr("disabled");
 
     myTimer.pauseOn = true;
-}
+};
+
+//main - when document ready:
+$(document).ready(function() {
+
+    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0,0, 0, "00:00");
+    console.log(myTimer);
+
+    //initialize button handlers
+    myTimer.initializeButtonHandlers();
+
+    //reset dashboards: admin A, admin A1, admin A2, public
+    $('#A').html(myTimer.resetString);
+    $('#A1').html(myTimer.resetString);
+    $('#A2').html(myTimer.resetString);
+    if (myTimer.publicTimerWindowOpen) {
+        publicTimerWindow.document.getElementById("timer_public").textContent = myTimer.resetString;
+    }
+});
 
 //this is the core timer function
 function tick(){
