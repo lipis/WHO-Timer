@@ -1,8 +1,6 @@
 //ToDo:
 //PRIORITY I:----------------------------------------|
-//*Refactor timer.js
 //*List of speakers
-//*Implement normal count
 //*Fix window permission problem
 //*Start public window automatically/ask user to open for him if not open
 //*Implement CLEAR
@@ -20,7 +18,7 @@
 //*Chair admin page
 
 
-//constructor of the 'class' "timer"
+//constructor - 'class': timer
 function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, internalHandle,
                publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn, resetString) {
     this.totalTimeRequested = totalTimeRequested;
@@ -34,7 +32,8 @@ function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumu
     this.pauseOn = pauseOn;
 }
 
-// 'class' methods
+//methods - 'class': timer
+//initialize button handlers
 Timer.prototype.initializeButtonHandlers = function(){
 
     //create onclick() even handlers for all buttons:
@@ -89,7 +88,7 @@ Timer.prototype.initializeButtonHandlers = function(){
     });
     //REPEAT button
     $('#b_repeat').click(function () {
-        repeat();
+        myTimer.repeat();
     });
     //CLEAR button
     $('#b_clear').click(function () {
@@ -97,14 +96,15 @@ Timer.prototype.initializeButtonHandlers = function(){
     });
     //PublicTimer open button
     $('#openPublic').click(function () {
-        openPublicTimerWindow();
+        myTimer.openPublicTimerWindow();
     });
     //PublicTimer close button
     $('#closePublic').attr({
-        onclick: 'closePublicTimerWindow()',
+        onclick: 'myTimer.closePublicTimerWindow()',
         disabled: 'disabled()'
     });
 };
+//format display
 Timer.prototype.formatDisplay = function(display, time) {
 
     if (time < 10) {
@@ -113,38 +113,44 @@ Timer.prototype.formatDisplay = function(display, time) {
         $('#'+display).html(time + ":" + "00");
     }
 };
+//reset displays
+Timer.prototype.resetDisplays = function () {
+
+    //reset dashboards: admin A, admin A1, admin A2, public
+    $('#A').html(myTimer.resetString);
+    $('#A1').html(myTimer.resetString);
+    $('#A2').html(myTimer.resetString);
+    if (myTimer.publicTimerWindowOpen) {
+        publicTimerWindow.document.getElementById("timer_public").textContent = myTimer.resetString;
+    }
+};
+//start the timer
 Timer.prototype.startCountdown = function() {
 
     if (!myTimer.pauseOn) {
 
         if (myTimer.totalTimeRequested > 0) {
 
+            //switch timerMode from 0 to 1
+            myTimer.timerMode = 1;
+
             //get time in seconds
             myTimer.currentTotalSeconds = myTimer.totalTimeRequested * 60;
             myTimer.sumupSeconds = myTimer.sumupTimeRequested *60;
-
-            //call the "tick" function every second
-            myTimer.intervalHandle = setInterval(tick, 1000);
-
-            //enable/disable START and PAUSE buttons
-            $('#b_start').attr('disabled','disabled');
-            $('#b_pause').removeAttr("disabled");
-
-            //switch timerMode from 0 to 1
-            myTimer.timerMode = 1;
         }
     } else {
-        //call the "tick" function every second
-        myTimer.intervalHandle = setInterval(tick, 1000);
 
         //switch pauseOn from true to false
         myTimer.pauseOn = false;
-
-        //enable/disable START and PAUSE buttons
-        $('#b_start').attr('disabled','disabled');
-        $('#b_pause').removeAttr("disabled");
     }
+    //call the "tick" function every second
+    myTimer.intervalHandle = setInterval(myTimer.tick, 1000);
+
+    //enable/disable START and PAUSE buttons
+    $('#b_start').attr('disabled','disabled');
+    $('#b_pause').removeAttr("disabled");
 };
+//pause function
 Timer.prototype.pause = function() {
 
     //stop counter
@@ -156,47 +162,40 @@ Timer.prototype.pause = function() {
 
     myTimer.pauseOn = true;
 };
+//update displays in admin and public views
+Timer.prototype.updateDisplays = function (currentTotalSeconds) {
 
-//main - when document ready:
-$(document).ready(function() {
+    //turn the seconds into mm:ss
+    var min = Math.floor(myTimer.currentTotalSeconds / 60);
+    var sec = myTimer.currentTotalSeconds - (min * 60);
 
-    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0,0, 0, "00:00");
-    console.log(myTimer);
-
-    //initialize button handlers
-    myTimer.initializeButtonHandlers();
-
-    //reset dashboards: admin A, admin A1, admin A2, public
-    $('#A').html(myTimer.resetString);
-    $('#A1').html(myTimer.resetString);
-    $('#A2').html(myTimer.resetString);
-    if (myTimer.publicTimerWindowOpen) {
-        publicTimerWindow.document.getElementById("timer_public").textContent = myTimer.resetString;
+    //add a leading zero for minutes
+    if (min < 10) {
+        min = "0" + min;
     }
-});
 
+    //add a leading zero for seconds
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    //create "time_forDisplay"
+    var time_forDisplay = min.toString() + ":" + sec;
+
+    //update displays
+    //- in timer admin
+    $('#A').html(time_forDisplay);
+
+    //- in timer public
+    if (myTimer.publicTimerWindow) {
+        myTimer.publicTimerWindow.document.getElementById("timer_public").textContent = time_forDisplay;
+    }
+};
 //this is the core timer function
-function tick(){
+Timer.prototype.tick = function () {
 
     //if inside the time limit
     if (myTimer.currentTotalSeconds>0 && myTimer.timerMode==1) {
-
-        //turn the seconds into mm:ss
-        var min = Math.floor(myTimer.currentTotalSeconds / 60);
-        var sec = myTimer.currentTotalSeconds - (min * 60);
-
-        //add a leading zero for minutes
-        if (min < 10) {
-            min = "0" + min;
-        }
-
-        //add a leading zero for seconds
-        if (sec < 10) {
-            sec = "0" + sec;
-        }
-
-        //create "time_forDisplay"
-        var time_forDisplay = min.toString() + ":" + sec;
 
         //subtract from seconds remaining
         myTimer.currentTotalSeconds--;
@@ -207,51 +206,21 @@ function tick(){
         //switch timerMode from 1 to 3
         myTimer.timerMode = 3;
 
-        //turn the seconds into mm:ss
-        var min = Math.floor(myTimer.currentTotalSeconds / 60);
-        var sec = myTimer.currentTotalSeconds - (min * 60);
-
-        //add a leading zero for minutes
-        if (min < 10) {
-            min = "0" + min;
-        }
-
-        //add a leading zero for seconds
-        if (sec < 10) {
-            sec = "0" + sec;
-        }
-
-        //create "time_forDisplay"
-        time_forDisplay = min.toString() + ":" + sec;
-
         //add to seconds remaining
         myTimer.currentTotalSeconds++;
     }
 
     //Do the following on each 'tick':
     //update the display digits
-    updateDisplays(time_forDisplay);
+    myTimer.updateDisplays(myTimer.currentTotalSeconds);
 
     //update the display traffic light colors
-    paintTrafficLights();
-}
-
-////update displays in admin and public views
-function updateDisplays(time_fd) {
-
-    //- in timer admin
-    $('#A').html(time_fd);
-
-    //- in timer public
-    if (myTimer.publicTimerWindow) {
-        myTimer.publicTimerWindow.document.getElementById("timer_public").textContent = time_fd;
-    }
-}
-
+    myTimer.paintTrafficLights();
+};
 //change public timer to the appropriate color
-function paintTrafficLights() {
+Timer.prototype.paintTrafficLights = function() {
 
-    countMode_sec = evalcms(myTimer.currentTotalSeconds, myTimer.sumupSeconds);
+    countMode_sec = myTimer.currentTotalSeconds - myTimer.sumupSeconds;
 
     //if on reset
     if (myTimer.timerMode == 0 ) {
@@ -297,17 +266,9 @@ function paintTrafficLights() {
         document.getElementById("box_orange").style.backgroundColor = 'white';
         document.getElementById("box_red").style.backgroundColor = '#fd030d';
     }
-}
-
-//calculate currently remaining counterMode seconds (= TotalTime - Sum-upTime)
-function evalcms(time_t_sec, time_s_sec) {
-
-    var evalcmsV = time_t_sec - time_s_sec;
-    return evalcmsV;
-}
-
+};
 //opens a new window showing the public Timer
-function openPublicTimerWindow() {
+Timer.prototype.openPublicTimerWindow = function() {
 
     //if public timer window already open, do nothing
     if (!myTimer.publicTimerWindowOpen) {
@@ -316,10 +277,9 @@ function openPublicTimerWindow() {
         $('#openPublic').attr('disabled','disabled');
         $('#closePublic').removeAttr("disabled");
     }
-}
-
+};
 //closes the public Timer window
-function closePublicTimerWindow() {
+Timer.prototype.closePublicTimerWindow = function() {
 
     if (myTimer.publicTimerWindow) {
         myTimer.publicTimerWindow.close();
@@ -327,9 +287,9 @@ function closePublicTimerWindow() {
         $('#closePublic').attr('disabled','disabled');
         $('#openPublic').removeAttr("disabled");
     }
-}
-
-function repeat() {
+};
+//repeat function
+Timer.prototype.repeat = function() {
 
     //stop counter
     clearInterval(myTimer.intervalHandle);
@@ -344,37 +304,30 @@ function repeat() {
     myTimer.currentTotalSeconds = myTimer.totalTimeRequested * 60;
     myTimer.sumupSeconds = myTimer.sumupTimeRequested *60;
 
-    //turn the seconds into mm:ss
-    var min = Math.floor(myTimer.currentTotalSeconds / 60);
-    var sec = myTimer.currentTotalSeconds - (min * 60);
-
-    //add a leading zero for minutes
-    if (min < 10) {
-        min = "0" + min;
-    }
-
-    //add a leading zero for seconds
-    if (sec < 10) {
-        sec = "0" + sec;
-    }
-
-    //create "time_forDisplay"
-    var time_forDisplay = min.toString() + ":" + sec;
-
-    //update dashboards
-    updateDisplays(time_forDisplay);
+    myTimer.updateDisplays(myTimer.currentTotalSeconds);
 
     //update the display traffic light colors
-    paintTrafficLights();
+    myTimer.paintTrafficLights();
 
     //manipulate buttons
     $('#b_pause').attr('disabled','disabled');
     $('#b_start').removeAttr("disabled");
-}
+};
+//clear function
+Timer.prototype.clear = function() {
+    //ToDo
+    //refresh/reset page
+    //location.reload();
+};
 
-//ToDo
-function clear() {
+//main - when document ready:
+$(document).ready(function() {
 
-    /*    //refresh/reset page
-     location.reload();*/
-}
+    //create a new object of 'class' "timer"
+    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0,0, 0, "00:00");
+
+    //initialize button handlers
+    myTimer.initializeButtonHandlers();
+
+    myTimer.resetDisplays();
+});
