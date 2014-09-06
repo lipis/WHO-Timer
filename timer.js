@@ -190,6 +190,17 @@ Timer.prototype.updateDisplays = function (currentTotalSeconds) {
     if (myTimer.publicTimerWindow) {
         myTimer.publicTimerWindow.document.getElementById("timer_public").textContent = time_forDisplay;
     }
+
+    /*jQuery.ajax({
+        type: 'get',
+        url: "timer-public.html",
+        success: function(result) {
+            html = jQuery(result);
+            alert(html.find("div#vTop").html());
+            alert(html.find("div#vTop"));
+        },
+    });*/
+
 };
 //this is the core timer function
 Timer.prototype.tick = function () {
@@ -272,7 +283,7 @@ Timer.prototype.openPublicTimerWindow = function() {
 
     //if public timer window already open, do nothing
     if (!myTimer.publicTimerWindowOpen) {
-        myTimer. publicTimerWindow = window.open("timer-public.html", "publicTimerWin", "scrollbars=0, fullscreen=1, channelmode=1");
+        myTimer. publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
         myTimer.publicTimerWindowOpen = true;
         $('#openPublic').attr('disabled','disabled');
         $('#closePublic').removeAttr("disabled");
@@ -324,7 +335,7 @@ Timer.prototype.clear = function() {
 $(document).ready(function() {
 
     //create a new object of 'class' "timer"
-    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0,0, 0, "00:00");
+    myTimer = new Timer(0, 0, 0, 0, 0, "", 0, 0, 0, "00:00");
 
     //initialize button handlers
     myTimer.initializeButtonHandlers();
