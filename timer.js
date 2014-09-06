@@ -37,8 +37,9 @@ var timerMode;
 //pauseOn flag checks if timer has been paused
 var pauseOn;*/
 
-function timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, internalHandle,
-               publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn) {
+//constructor for objects of the class 'timer'
+function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, internalHandle,
+               publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn, resetString) {
     this.totalTimeRequested = totalTimeRequested;
     this.sumupTimeRequested = sumupTimeRequested;
     this.currentTotalSeconds = currentTotalSeconds;
@@ -50,94 +51,52 @@ function timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumu
     this.pauseOn = pauseOn;
 }
 
-//main - when document ready:
-$(document).ready(function() {
-
-    myTimer = new timer(0, 0, 0, 0, 0, 0, 0,0, 0);
-    console.log(myTimer.pauseOn);
-
-    //initialize button handlers
-    initializeButtonHandlers();
-
-    //initialize flags
-    initializeFlags();
-
-    //reset total and sum-up requested time
-    totalTimeRequested = 0;
-    sumupTimeRequested = 0;
-
-    //reset dashboards: admin A, admin A1, admin A2, public
-    var resetS = "00:00";
-    $('#A').html(resetS);
-    $('#A1').html(resetS);
-    $('#A2').html(resetS);
-    if (publicTimerWindowOpen) {
-        publicTimerWindow.document.getElementById("timer_public").textContent = resetS;
-    }
-});
-
-//initialize button handlers
-function initializeButtonHandlers() {
+// Add a couple of methods to Person.prototype
+Timer.prototype.initializeButtonHandlers = function(){
 
     //create onclick() even handlers for all buttons:
     //Total time UP
-    $("#b_t_up").click(function(){
+    $("#b_t_up").click(function () {
         //set total time up
         if (myTimer.totalTimeRequested < 99) {
             myTimer.totalTimeRequested += 1;
 
             //set A1 up
-            if (myTimer.totalTimeRequested < 10) {
-                $('#A1').html("0" + myTimer.totalTimeRequested + ":" + "00");
-            } else {
-                $('#A1').html(myTimer.totalTimeRequested + ":" + "00");
-            }
+            myTimer.formatDisplay("A1", myTimer.totalTimeRequested);
         }
     });
     //Total time DOWN
-    $('#b_t_down').click(function(){
+    $('#b_t_down').click(function () {
         //set total time down
         if (myTimer.totalTimeRequested > 0 && myTimer.totalTimeRequested > myTimer.sumupTimeRequested) {
             myTimer.totalTimeRequested -= 1;
 
             //set A1 down
-            if (myTimer.totalTimeRequested < 10) {
-                $('#A1').html("0" + myTimer.totalTimeRequested + ":" + "00");
-            } else {
-                $('#A1').html(myTimer.totalTimeRequested + ":" + "00");
-            }
+            myTimer.formatDisplay("A1", myTimer.totalTimeRequested);
         }
     });
     //Sum-up time UP
-    $('#b_s_up').click(function(){
+    $('#b_s_up').click(function () {
         //set sum-up time up
-        if (sumupTimeRequested < totalTimeRequested) {
-            sumupTimeRequested += 1;
+        if (myTimer.sumupTimeRequested < myTimer.totalTimeRequested) {
+            myTimer.sumupTimeRequested += 1;
 
             //set A2 up
-            if (sumupTimeRequested < 10) {
-                $('#A2').html("0" + sumupTimeRequested + ":" + "00");
-            } else {
-                $('#A2').html(sumupTimeRequested + ":" + "00");
-            }
+            myTimer.formatDisplay("A2", myTimer.sumupTimeRequested);
         }
     });
     //Sum-up time DOWN
-    $('#b_s_down').click(function(){
+    $('#b_s_down').click(function () {
         //set sum-up time down
-        if (sumupTimeRequested > 0) {
-            sumupTimeRequested -= 1;
+        if (myTimer.sumupTimeRequested > 0) {
+            myTimer.sumupTimeRequested -= 1;
 
             //set A2 down
-            if (sumupTimeRequested < 10) {
-                $('#A2').html("0" + sumupTimeRequested + ":" + "00");
-            } else {
-                $('#A2').html(sumupTimeRequested + ":" + "00");
-            }
+            myTimer.formatDisplay("A2", myTimer.sumupTimeRequested);
         }
     });
     //START button
-    $('#b_start').click(function(){
+    $('#b_start').click(function () {
         startCountdown();
     });
     //PAUSE button
@@ -146,15 +105,15 @@ function initializeButtonHandlers() {
         disabled: 'disabled()'
     });
     //REPEAT button
-    $('#b_repeat').click(function(){
+    $('#b_repeat').click(function () {
         repeat();
     });
     //CLEAR button
-    $('#b_clear').click(function(){
+    $('#b_clear').click(function () {
         clear();
     });
     //PublicTimer open button
-    $('#openPublic').click(function(){
+    $('#openPublic').click(function () {
         openPublicTimerWindow();
     });
     //PublicTimer close button
@@ -162,43 +121,62 @@ function initializeButtonHandlers() {
         onclick: 'closePublicTimerWindow()',
         disabled: 'disabled()'
     });
-}
+};
 
-//initialize flags
-function initializeFlags() {
+Timer.prototype.formatDisplay = function(display, time) {
 
-    timerMode = 0;
-    publicTimerWindowOpen = false;
-    pauseOn = false;
-}
+    if (time < 10) {
+        $('#'+display).html("0" + time + ":" + "00");
+    } else {
+        $('#'+display).html(time + ":" + "00");
+    }
+};
+
+//main - when document ready:
+$(document).ready(function() {
+
+    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0,0, 0, "00:00");
+    console.log(myTimer);
+
+    //initialize button handlers
+    myTimer.initializeButtonHandlers();
+
+    //reset dashboards: admin A, admin A1, admin A2, public
+    $('#A').html(myTimer.resetString);
+    $('#A1').html(myTimer.resetString);
+    $('#A2').html(myTimer.resetString);
+    if (myTimer.publicTimerWindowOpen) {
+        publicTimerWindow.document.getElementById("timer_public").textContent = myTimer.resetString;
+    }
+});
 
 //start the timer
 function startCountdown(){
 
-    if (!pauseOn) {
+    if (!myTimer.pauseOn) {
 
-        if (totalTimeRequested > 0) {
+        if (myTimer.totalTimeRequested > 0) {
 
             //get time in seconds
-            currentTotalSeconds = totalTimeRequested * 60;
-            sumupSeconds = sumupTimeRequested *60;
+            myTimer.currentTotalSeconds = myTimer.totalTimeRequested * 60;
+            myTimer.sumupSeconds = myTimer.sumupTimeRequested *60;
 
             //call the "tick" function every second
-            intervalHandle = setInterval(tick, 1000);
+            myTimer.intervalHandle = setInterval(tick, 1000);
 
             //enable/disable START and PAUSE buttons
             $('#b_start').attr('disabled','disabled');
             $('#b_pause').removeAttr("disabled");
 
             //switch timerMode from 0 to 1
-            timerMode = 1;
+            myTimer.timerMode = 1;
         }
     } else {
         //call the "tick" function every second
-        intervalHandle = setInterval(tick, 1000);
+        myTimer.intervalHandle = setInterval(tick, 1000);
 
         //switch pauseOn from true to false
-        pauseOn = false;
+        myTimer.pauseOn = false;
 
         //enable/disable START and PAUSE buttons
         $('#b_start').attr('disabled','disabled');
@@ -210,24 +188,24 @@ function startCountdown(){
 function pause() {
 
     //stop counter
-    clearInterval(intervalHandle);
+    clearInterval(myTimer.intervalHandle);
 
     //manipulate buttons
     $('#b_pause').attr('disabled','disabled');
     $('#b_start').removeAttr("disabled");
 
-    pauseOn = true;
+    myTimer.pauseOn = true;
 }
 
 //this is the core timer function
 function tick(){
 
     //if inside the time limit
-    if (currentTotalSeconds>0 && timerMode==1) {
+    if (myTimer.currentTotalSeconds>0 && myTimer.timerMode==1) {
 
         //turn the seconds into mm:ss
-        var min = Math.floor(currentTotalSeconds / 60);
-        var sec = currentTotalSeconds - (min * 60);
+        var min = Math.floor(myTimer.currentTotalSeconds / 60);
+        var sec = myTimer.currentTotalSeconds - (min * 60);
 
         //add a leading zero for minutes
         if (min < 10) {
@@ -243,17 +221,17 @@ function tick(){
         var time_forDisplay = min.toString() + ":" + sec;
 
         //subtract from seconds remaining
-        currentTotalSeconds--;
+        myTimer.currentTotalSeconds--;
 
         //if outside the time limit (or if currentTotalSeconds<=0)
     } else {
 
         //switch timerMode from 1 to 3
-        timerMode = 3;
+        myTimer.timerMode = 3;
 
         //turn the seconds into mm:ss
-        var min = Math.floor(currentTotalSeconds / 60);
-        var sec = currentTotalSeconds - (min * 60);
+        var min = Math.floor(myTimer.currentTotalSeconds / 60);
+        var sec = myTimer.currentTotalSeconds - (min * 60);
 
         //add a leading zero for minutes
         if (min < 10) {
@@ -269,7 +247,7 @@ function tick(){
         time_forDisplay = min.toString() + ":" + sec;
 
         //add to seconds remaining
-        currentTotalSeconds++;
+        myTimer.currentTotalSeconds++;
     }
 
     //Do the following on each 'tick':
@@ -287,21 +265,21 @@ function updateDisplays(time_fd) {
     $('#A').html(time_fd);
 
     //- in timer public
-    if (publicTimerWindow) {
-        publicTimerWindow.document.getElementById("timer_public").textContent = time_fd;
+    if (myTimer.publicTimerWindow) {
+        myTimer.publicTimerWindow.document.getElementById("timer_public").textContent = time_fd;
     }
 }
 
 //change public timer to the appropriate color
 function paintTrafficLights() {
 
-    countMode_sec = evalcms(currentTotalSeconds, sumupSeconds);
+    countMode_sec = evalcms(myTimer.currentTotalSeconds, myTimer.sumupSeconds);
 
     //if on reset
-    if (timerMode == 0 ) {
+    if (myTimer.timerMode == 0 ) {
         //in public
-        if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
+        if (myTimer.publicTimerWindow) {
+            myTimer.publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -309,10 +287,10 @@ function paintTrafficLights() {
         document.getElementById("box_red").style.backgroundColor = 'white';
 
         //else if (TotalTime < 'currentTick' < Sum-upTime)
-    } else if ((currentTotalSeconds > 0) && (countMode_sec >= 0) && (timerMode != 3)) {
+    } else if ((myTimer.currentTotalSeconds > 0) && (countMode_sec >= 0) && (myTimer.timerMode != 3)) {
         //in public
-        if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
+        if (myTimer.publicTimerWindow) {
+            myTimer.publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = '#99fe00';
@@ -320,10 +298,10 @@ function paintTrafficLights() {
         document.getElementById("box_red").style.backgroundColor = 'white';
 
         //else if (Sum-upTime < 'currentTick' < 0)
-    } else if ((currentTotalSeconds > 0) && (countMode_sec < 0) && (timerMode != 3)) {
+    } else if ((myTimer.currentTotalSeconds > 0) && (countMode_sec < 0) && (myTimer.timerMode != 3)) {
         //in public
-        if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
+        if (myTimer.publicTimerWindow) {
+            myTimer.publicTimerWindow.document.getElementById("timer_public").style.color = 'white';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -331,10 +309,10 @@ function paintTrafficLights() {
         document.getElementById("box_red").style.backgroundColor = 'white';
 
         //if (0 < 'currentTick')
-    } else if (timerMode == 3) {
+    } else if (myTimer.timerMode == 3) {
         //in public
-        if (publicTimerWindow) {
-            publicTimerWindow.document.getElementById("timer_public").style.color = '#fd030d';
+        if (myTimer.publicTimerWindow) {
+            myTimer.publicTimerWindow.document.getElementById("timer_public").style.color = '#fd030d';
         }
         //in admin
         document.getElementById("box_green").style.backgroundColor = 'white';
@@ -354,9 +332,9 @@ function evalcms(time_t_sec, time_s_sec) {
 function openPublicTimerWindow() {
 
     //if public timer window already open, do nothing
-    if (!publicTimerWindowOpen) {
-        publicTimerWindow = window.open("timer-public.html", "publicTimerWin", "scrollbars=0, fullscreen=1, channelmode=1");
-        publicTimerWindowOpen = true;
+    if (!myTimer.publicTimerWindowOpen) {
+        myTimer. publicTimerWindow = window.open("timer-public.html", "publicTimerWin", "scrollbars=0, fullscreen=1, channelmode=1");
+        myTimer.publicTimerWindowOpen = true;
         $('#openPublic').attr('disabled','disabled');
         $('#closePublic').removeAttr("disabled");
     }
@@ -365,9 +343,9 @@ function openPublicTimerWindow() {
 //closes the public Timer window
 function closePublicTimerWindow() {
 
-    if (publicTimerWindow) {
-        publicTimerWindow.close();
-        publicTimerWindowOpen = false;
+    if (myTimer.publicTimerWindow) {
+        myTimer.publicTimerWindow.close();
+        myTimer.publicTimerWindowOpen = false;
         $('#closePublic').attr('disabled','disabled');
         $('#openPublic').removeAttr("disabled");
     }
@@ -376,18 +354,21 @@ function closePublicTimerWindow() {
 function repeat() {
 
     //stop counter
-    clearInterval(intervalHandle);
+    clearInterval(myTimer.intervalHandle);
 
     //reset flags to initial state
-    initializeFlags();
+    myTimer.timerMode = 0;
+    myTimer.publicTimerWindowOpen = false;
+    myTimer.pauseOn = false;
+
 
     //get time in seconds
-    currentTotalSeconds = totalTimeRequested * 60;
-    sumupSeconds = sumupTimeRequested *60;
+    myTimer.currentTotalSeconds = myTimer.totalTimeRequested * 60;
+    myTimer.sumupSeconds = myTimer.sumupTimeRequested *60;
 
     //turn the seconds into mm:ss
-    var min = Math.floor(currentTotalSeconds / 60);
-    var sec = currentTotalSeconds - (min * 60);
+    var min = Math.floor(myTimer.currentTotalSeconds / 60);
+    var sec = myTimer.currentTotalSeconds - (min * 60);
 
     //add a leading zero for minutes
     if (min < 10) {
