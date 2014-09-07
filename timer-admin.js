@@ -2,8 +2,6 @@
 //PRIORITY I:----------------------------------------|
 //*List of speakers
 //*Fix window permission problem
-//*Start public window automatically/ask user to open for him if not open
-//*Implement CLEAR
 
 //PRIORITY II:---------------------------------------|
 //*Progress bar for public
@@ -16,6 +14,8 @@
 //*Focus back to admin when opening new public timer
 //*Admin keyboard shortcuts
 //*Chair admin page
+//*Start public window automatically/ask user to open for him if not open
+//*Implement CLEAR differently
 
 
 //constructor - 'class': timer

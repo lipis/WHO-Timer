@@ -1,20 +1,31 @@
-#consoleBox {
+#container {
+    position: relative;
+}
+#timerConsole, #speakerConsole {
+    position: absolute;
     width: 500px;
     height: 600px;
     text-align: center;
-}
-#consoleBox table {
-    width: 100%;
-}
-#consoleBox {
     border: 5px solid black;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
 }
-#consoleBox table,
-#consoleBox th,
-#consoleBox td {
+#speakerConsole {
+    width: 600px;
+    height: 600px;
+    left: 500px;
+    top: 0px;
+}
+#timerConsole table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#timerConsole table,
+#timerConsole th,
+#timerConsole td {
     border: 1px solid black;
 }
-#consoleBox td {
+#timerConsole td {
     padding: 5px;
     width: 25%;
 }
@@ -27,50 +38,48 @@
     margin-left: auto;
     margin-right: auto;
 }
-
 #A, #A1, #A2 {
     font-weight: bold;
+    font-size: 25px;
 }
-
 #A {
     font-size: 50px;
 }
-#A1, #A2 {
-    font-size: 25px;
-}
-#consoleBox #b_t_up, #b_t_down, #b_s_up, #b_s_down {
+#timerConsole #b_t_up, #b_t_down, #b_s_up, #b_s_down {
     width: 75px;
     height: 75px;
 }
-#consoleBox #b_start, #b_pause, #b_repeat {
+#timerConsole #b_start, #b_pause, #b_repeat {
     width: 100px;
     height: 100px;
 }
-#consoleBox #openPublic, #closePublic {
+#timerConsole #openPublic, #closePublic {
     width: 170px;
     height: 25px;
 }
 #colorDivs {
     border-collapse: collapse;
 }
-#consoleBox table {
-    border-collapse: collapse;
-}
-#consoleBox {
+#countriesAll, #countriesSpeaking {
+
+    width: 300px;
+    height: 600px;
+    text-align: center;
+    border: 1px solid black;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-#template {
-    padding-top: 200px;
+#countriesAll table, #countriesSpeaking table {
+    width: 300px;
+}
+#countriesAll {
+    background-color: pink;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#countriesSpeaking {
+    background-color: green;
+    position: absolute;
+    left: 300px;
+    top: 0px;
 }
