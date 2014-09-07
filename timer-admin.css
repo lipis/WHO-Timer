@@ -68,7 +68,7 @@
     border: 1px solid black;
     font-family: Arial, Helvetica, sans-serif;
 }
-#countriesAll table, #countriesSpeaking table {
+#countriesAll table {
     width: 300px;
 }
 #countriesAll {

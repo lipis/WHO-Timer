@@ -79,14 +79,28 @@
 		<div id="speakerConsole">
 			<div id="countriesAll">
 				<table>
-					<th><tr><td><h3>Member States:</h3></td></tr></th>
+					<th><tr><td colspan="2"><h3>Member States:</h3></td></tr></th>
 					<tb>
-						<tr><td>Albania</td></tr>
-						<tr><td>Andorra</td></tr>
+						<tr>
+							<td id="alb" draggable="true" ondragstart="drag(event)">Albania</td>
+							<td id="and" draggable="true" ondragstart="drag(event)">Andorra</td>
+						</tr>
+						<tr>
+							<td>Armenia</td>
+							<td>Austria</td>
+						</tr>
+						<tr>
+							<td>Azerbaijan</td>
+							<td>Belarus</td>
+						</tr>
+						<tr>
+							<td>Belgium</td>
+							<td></td>
+						</tr>
 					</tb>
 				</table>
 			</div>
-			<div id="countriesSpeaking">
+			<div id="countriesSpeaking" ondrop="drop(event)" ondragover="allowDrop(event)">
 				<h3>Active list of speakers:</h3>
 			</div>
 		</div>
@@ -97,3 +111,59 @@
 	</div>-->
 </body>
 </html>
+
+<!--
+WHO Member States:
+Albania
+Andorra
+Armenia
+Austria
+Azerbaijan
+Belarus
+Belgium
+Bosnia and Herzegovina
+Bulgaria
+Croatia
+Cyprus
+Czech Republic
+Denmark
+Estonia
+Finland
+France
+Georgia
+Germany
+Greece
+Hungary
+Iceland
+Ireland
+Israel
+Italy
+Kazakhstan
+Kyrgyzstan
+Latvia
+Lithuania
+Luxembourg
+Malta
+Monaco
+Montenegro
+Netherlands
+Norway
+Poland
+Portugal
+Republic of Moldova
+Romania
+Russian Federation
+San Marino
+Serbia
+Slovakia
+Slovenia
+Spain
+Sweden
+Switzerland
+Tajikistan
+The former Yugoslav Republic of Macedonia
+Turkey
+Turkmenistan
+Ukraine
+United Kingdom of Great Britain and Northern Ireland
+Uzbekistan-->
