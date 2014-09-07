@@ -57,9 +57,12 @@ html {
     /*background-color: green;*/
 }
 #speakerArea h1 {
-    font-size: 40px;
+    font-size: 50px;
     color: white;
     text-align: center;
+}
+#speakerArea p {
+    font-size: 40px;
 }
 #listOfCountries {
     margin-top: 100px;
