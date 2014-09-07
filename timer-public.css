@@ -1,19 +1,28 @@
 /*In absolute positioning for FHD (1920x1080)*/
+body {
+    margin: 0;
+}
+html {
+    overflow: hidden;
+}
 #container {
     /*background-color: #00558f;*//*(WHO public website blue)*/
     background-color: #00365b; /*(WHO public website blue-darker)*/
     width: 1920px;
     height: 1080px;
     position: relative;
+    overflow: hidden;
 }
 /*timerArea*/
 #timerArea {
     position: absolute;
-    width: 1280px;
-    height: 864px;
+    width: 1279px;
+    height: 863px;
     top: 0px;
     left: 0px;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    /*background-color: pink;*/
 }
 #timerGroup {
     position: absolute;
@@ -21,6 +30,7 @@
     height: 320px;
     top: 272px;
     left: 440px;
+    /*background-color: deeppink;*/
 }
 #timer_public {
     font-size: 162px;
@@ -28,20 +38,23 @@
     /*background-color: #99fe00;*//**//*(green)*/
     /*background-color: #f4d75f;*//**//*(orange)*/
     /*background-color: #fd030d;*//**//*(red)*/
+    /*background-color: hotpink;*/
 }
 #country_name {
     font-size: 90px;
     color: white;
     margin-left: 20px;
+    /*background-color: lightpink;*/
 }
 /*speakerArea*/
 #speakerArea {
     position: absolute;
     width: 640px;
-    height: 864px;
+    height: 863px;
     top: 0px;
-    right: 0px;
-    border: 1px solid white;
+    left: 1280px;
+    border-bottom: 1px solid white;
+    /*background-color: green;*/
 }
 #speakerArea h1 {
     font-size: 40px;
@@ -53,13 +66,14 @@
     margin-left: 150px;
     color: white;
     font-size: 30px;
+    /*background-color: greenyellow;*/
 }
 /*logoArea*/
 #logoArea {
     position: absolute;
     width: 1920px;
-    height: 216px;/*(1080/5, or the bottom 1/5 of the window)*/
-    bottom: 0px;
+    height: 216px;/*(1080/5-2, or the bottom 1/5 of the window -2px for the border)*/
+    top: 864px;
     left: 0px;
     /*background-color: brown;*/
 }
@@ -67,21 +81,37 @@
    float: left;
    width: 25%;
    height: 216px;
-    position: relative;
+   position: relative;
 }
 #en img {
-    height: 175px;
+    height: 150px;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 #ru img {
-    height: 175px;
+    height: 150px;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 #fr img {
-    height: 175px;
+    height: 150px;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 #ge img {
-    height: 175px;
+    height: 150px;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
