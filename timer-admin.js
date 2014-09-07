@@ -1,23 +1,3 @@
-//ToDo:
-//PRIORITY I:----------------------------------------|
-//*List of speakers
-//*Fix window permission problem
-
-//PRIORITY II:---------------------------------------|
-//*Progress bar for public
-//*Fix tick's one second delay when it starts
-//*Increase and decrease timer live
-//*Make Start and Pause one button
-//*Use colours for admin layout/simulate Limitimer?
-//*Show total time when stopped
-//*Reset public timer when page resets
-//*Focus back to admin when opening new public timer
-//*Admin keyboard shortcuts
-//*Chair admin page
-//*Start public window automatically/ask user to open for him if not open
-//*Implement CLEAR differently
-
-
 //constructor - 'class': timer
 function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, intervalHandle,
                publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn, resetString) {
@@ -331,16 +311,3 @@ $(document).ready(function() {
 
     myTimer.resetDisplays();
 });
-
-//speaker list code below this point:
-function drag(ev) {
-    ev.dataTransfer.setData("text/html", ev.target.id);
-}
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text/html");
-    ev.target.appendChild(document.getElementById(data));
-}

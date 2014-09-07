@@ -72,14 +72,15 @@
     width: 300px;
 }
 #countriesAll {
-    background-color: pink;
+    background-color: white;
     position: absolute;
     left: 0px;
     top: 0px;
 }
 #countriesSpeaking {
-    background-color: green;
     position: absolute;
     left: 300px;
     top: 0px;
+    background-color: #00365b;
+    color: white;
 }
