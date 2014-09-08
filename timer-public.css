@@ -33,7 +33,7 @@ html {
     /*background-color: deeppink;*/
 }
 #timer_public {
-    font-size: 162px;
+    font-size: 170px;
     color: white;
     /*background-color: #99fe00;*//**//*(green)*/
     /*background-color: #f4d75f;*//**//*(orange)*/
@@ -81,28 +81,18 @@ html {
     /*background-color: brown;*/
 }
 #en, #fr, #ge, #ru {
-   float: left;
-   /*width: 25%;*/
+   /*float: left;
+   width: 25%;
    height: 216px;
-   position: relative;
-}
-#en {
-    width: 25%;
-}
-#fr {
-    width: 25%;
-}
-#ge {
-    width: 25%;
-}
-#ru {
-    width: 25%;
+   position: relative;*/
 }
 #en img, #fr img, #ge img, #ru img {
+    float: left;
     height: 135px;
-    position: absolute;
+    /*position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)*/
+    padding: 38px;
 }
