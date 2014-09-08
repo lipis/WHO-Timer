@@ -80,38 +80,26 @@ html {
     left: 0px;
     /*background-color: brown;*/
 }
-#en, #ru, #fr, #ge {
+#en, #fr, #ge, #ru {
    float: left;
-   width: 25%;
+   /*width: 25%;*/
    height: 216px;
    position: relative;
 }
-#en img {
-    height: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+#en {
+    width: 25%;
 }
-#ru img {
-    height: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+#fr {
+    width: 25%;
 }
-#fr img {
-    height: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+#ge {
+    width: 25%;
 }
-#ge img {
-    height: 150px;
+#ru {
+    width: 25%;
+}
+#en img, #fr img, #ge img, #ru img {
+    height: 135px;
     position: absolute;
     top: 50%;
     left: 50%;
