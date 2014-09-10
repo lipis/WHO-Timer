@@ -4,7 +4,7 @@ body {
 #container {
     position: relative;
 }
-#timerConsole, #speakerConsole-all, #speakerConsole-list {
+#timerConsole, #speakerConsole-all, #speakerConsole-list, #speakerConsole-currentSpeaker {
     position: absolute;
     height: 720px;
     margin-left: 2px;
@@ -69,18 +69,35 @@ body {
     top: 0px;
     background-color: white;
 }
-#speakerConsole-list {
-    width: 270px;
-    left: 934px;
-    top: 0px;
-    background-color: #00365b;
-    color: white;
-    border-left: 0px solid black;
-}
 #speakerConsole-all table {
     table-layout: fixed;
     padding: 5px;
 }
 #alb, #and {
     width: 50%;
+}
+#speakerConsole-currentSpeaker, #speakerConsole-list {
+    width: 270px;
+    left: 934px;
+    background-color: #00365b;
+    color: white;
+    border-left: 0px solid black;
+}
+#speakerConsole-currentSpeaker {
+    height: 150px;
+    background-color: deeppink;
+    top: 0px;
+}
+#speakerConsole-list {
+    height: 570px;
+    top: 150px;
+}
+
+
+
+
+#template {
+    position: absolute;
+    left: 0px;
+    top: 1000px;
 }

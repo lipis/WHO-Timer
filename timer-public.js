@@ -12,10 +12,3 @@ $(document).ready(function() {
     console.log('-document width: ' + a +', document height: ' + b + '.');
     console.log('-window width: ' + c + ', window height: ' + d + '.');
 });
-
-
-
-
-
-
-

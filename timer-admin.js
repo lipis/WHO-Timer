@@ -311,3 +311,34 @@ $(document).ready(function() {
 
     myTimer.resetDisplays();
 });
+
+
+
+
+
+//below find the Country Speaker List implementation
+function drag(ev) {
+    ev.dataTransfer.setData("text/html", ev.target.id);
+}
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text/html");
+    ev.target.appendChild(document.getElementById(data));
+
+
+    var myCountryChild = "<p>" + data + "</p>";
+
+    /*if (myTimer.publicTimerWindow) {
+     myTimer.publicTimerWindow.document.getElementById("#listOfCountries").appendChild(myCountryChild);
+     }*/
+
+    /*console.log(myTimer.publicTimerWindow);*/
+
+    $('#speakerConsole-countriesList').append(myCountryChild);
+
+
+
+}
