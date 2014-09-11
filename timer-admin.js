@@ -327,16 +327,29 @@ function allowDrop(ev) {
 }
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text/plain");
-    dataFormated = "<p>" + data + "</p>";
-    $(ev.target).append(dataFormated);
+    var countryName = ev.dataTransfer.getData("text/plain");
+
+    countryNameFormattedInP = "<p class=\"test1\">" + countryName + "</p>";
+
+    /*if ($(ev.target).hasChildNodes("p")) {
+        $(ev.target).remove(".test1");
+    }*/
+
+
+    $(ev.target).append(countryNameFormattedInP);
 
     /*$('#myTimer.publicTimerWindow.country').append(dataFormated);*/
 
 
-    /*if (myTimer.publicTimerWindow) {*/
+
      /*myTimer.publicTimerWindow.document.getElementById("#country").appendChild(dataFormated);*/
-    console.log(myTimer.publicTimerWindowOpen);
+    /*console.log("myTimer.publicTimerWindowOpen: " + myTimer.publicTimerWindowOpen);*/
+
+    if (myTimer.publicTimerWindow) {
+        /*myTimer.publicTimerWindow.document.getElementById("country").innerHTML("zzzzzzzzzzzz");*/
+        myTimer.publicTimerWindow.document.getElementById("country_name").textContent = (countryName);
+    }
+    /*document.getElementById("template")*/
 
 
     /*t1 = myTimer.publicTimerWindow.getElementById("country");
