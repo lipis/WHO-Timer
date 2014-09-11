@@ -69,6 +69,7 @@ Timer.prototype.initializeButtonHandlers = function(){
     //REPEAT button
     $('#b_repeat').click(function () {
         myTimer.repeat();
+        gearUp();
     });
     //CLEAR button
     $('#b_clear').click(function () {
