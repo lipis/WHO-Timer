@@ -89,17 +89,21 @@ body {
 }
 #speakerConsole-currentSpeaker {
     height: 150px;
-    background-color: deeppink;
+    background-color: #00365b;
     top: 0px;
+}
+.countryField {
+    width: 200px;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+    margin-top: 10px;
 }
 #speakerConsole-list {
     height: 570px;
     top: 150px;
 }
-
-
-
-
 #template {
     position: absolute;
     left: 0px;

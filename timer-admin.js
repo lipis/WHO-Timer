@@ -325,35 +325,42 @@ function drag(ev) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
-function drop(ev) {
+//drop method for "Current Speaker Country"
+function dropCurrent(ev) {
     ev.preventDefault();
+
+    //display country in admin window
     var countryName = ev.dataTransfer.getData("text/plain");
+    document.getElementById("countryCurrent").textContent = (countryName);
 
-    countryNameFormattedInP = "<p class=\"test1\">" + countryName + "</p>";
+    /*countryNameFormattedInP = "<p>" + countryName + "</p>";*/
+    /*$(ev.target).append(countryNameFormattedInP);*/
+    
 
-    /*if ($(ev.target).hasChildNodes("p")) {
-        $(ev.target).remove(".test1");
-    }*/
-
-
-    $(ev.target).append(countryNameFormattedInP);
+    //display country in public window
+    if (myTimer.publicTimerWindow) {
+        myTimer.publicTimerWindow.document.getElementById("country_name").textContent = (countryName);
+    }
 
     /*$('#myTimer.publicTimerWindow.country').append(dataFormated);*/
-
-
 
      /*myTimer.publicTimerWindow.document.getElementById("#country").appendChild(dataFormated);*/
     /*console.log("myTimer.publicTimerWindowOpen: " + myTimer.publicTimerWindowOpen);*/
 
-    if (myTimer.publicTimerWindow) {
-        /*myTimer.publicTimerWindow.document.getElementById("country").innerHTML("zzzzzzzzzzzz");*/
-        myTimer.publicTimerWindow.document.getElementById("country_name").textContent = (countryName);
-    }
     /*document.getElementById("template")*/
-
 
     /*t1 = myTimer.publicTimerWindow.getElementById("country");
     console.log(t1);*/
 
     /*console.log(myTimer.publicTimerWindow);*/
+}
+
+//drop method for "Active list of speakers"
+function dropList(ev) {
+    ev.preventDefault();
+
+    //get
+    var countryName = ev.dataTransfer.getData("text/plain");
+    countryNameFormattedInP = "<p class=\"test1\">" + countryName + "</p>";
+    $(ev.target).append(countryNameFormattedInP);
 }

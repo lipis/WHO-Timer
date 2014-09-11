@@ -187,16 +187,22 @@
 					</tr>
 				</table>
 			</div>
-        <div id="speakerConsole-currentSpeaker" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="speakerConsole-currentSpeaker" ondrop="dropCurrent(event)" ondragover="allowDrop(event)">
             <h3>Current speaker country</h3>
+			<table class="countryField"><tr><td><span id="countryCurrent"></span></td></tr></table>
         </div>
-		<div id="speakerConsole-list" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<h3>Active list of speakers</h3>
+		<div id="speakerConsole-list" ondrop="dropList(event)" ondragover="allowDrop(event)">
+			<h3>Active list of speakers</h3>
+			<table class="countryField"><tr><td><span id="countrylist1"></span></td></tr></table>
+			<table class="countryField"><tr><td><span id="countrylist2"></span></td></tr></table>
+			<table class="countryField"><tr><td><span id="countrylist3"></span></td></tr></table>
+			<table class="countryField"><tr><td><span id="countrylist4"></span></td></tr></table>
+			<table class="countryField"><tr><td><span id="countrylist5"></span></td></tr></table>
 		</div>
     </div>
-	<div id="template">
+	<!--<div id="template">
 		<img src="images/originals/LimitimerControl_small.jpg">
-	</div>
+	</div>-->
 </body>
 </html>
 
