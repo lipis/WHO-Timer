@@ -331,11 +331,11 @@ function dropCurrent(ev) {
 
     //display country in admin window
     var countryName = ev.dataTransfer.getData("text/plain");
-    document.getElementById("countryCurrent").textContent = (countryName);
+    document.getElementById("countryCurrent").textContent = countryName;
 
     //display country in public window
     if (myTimer.publicTimerWindow) {
-        myTimer.publicTimerWindow.document.getElementById("country_name").textContent = (countryName);
+        myTimer.publicTimerWindow.document.getElementById("country_name").textContent = countryName;
     }
 
     /*countryNameFormattedInP = "<p>" + countryName + "</p>";*/
@@ -352,10 +352,9 @@ function dropCurrent(ev) {
 //drop method for "Active list of speakers"
 function dropList(ev) {
     ev.preventDefault();
-
-    //display countries in admin window
     var countryName = ev.dataTransfer.getData("text/plain");
 
+    //display countries in admin window
     for (var i=1; i<=6; i++) {
         if (document.getElementById("countryList" + i).textContent == "") {
             document.getElementById("countryList" + i).textContent = countryName;
@@ -372,5 +371,36 @@ function dropList(ev) {
             }
         }
     }
+}
 
+//"gear" countries
+function gearUp() {
+    //current
+    // in admin
+    document.getElementById("countryCurrent").textContent = document.getElementById("countryList1").textContent;
+
+    // in public
+    if (myTimer.publicTimerWindow) {
+        myTimer.publicTimerWindow.document.getElementById("country_name").textContent =
+            myTimer.publicTimerWindow.document.getElementById("countryLP1").textContent;
+    }
+
+    //list
+    // in admin
+    document.getElementById("countryList1").textContent = document.getElementById("countryList2").textContent;
+    document.getElementById("countryList2").textContent = document.getElementById("countryList3").textContent;
+    document.getElementById("countryList3").textContent = document.getElementById("countryList4").textContent;
+    document.getElementById("countryList4").textContent = document.getElementById("countryList5").textContent;
+    document.getElementById("countryList5").textContent = document.getElementById("countryList6").textContent;
+    document.getElementById("countryList6").textContent = "";
+
+    // in public
+    if (myTimer.publicTimerWindow) {
+        myTimer.publicTimerWindow.document.getElementById("countryLP1").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP2").textContent;
+        myTimer.publicTimerWindow.document.getElementById("countryLP2").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP3").textContent;
+        myTimer.publicTimerWindow.document.getElementById("countryLP3").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP4").textContent;
+        myTimer.publicTimerWindow.document.getElementById("countryLP4").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP5").textContent;
+        myTimer.publicTimerWindow.document.getElementById("countryLP5").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP6").textContent;
+        myTimer.publicTimerWindow.document.getElementById("countryLP6").textContent = "";
+    }
 }

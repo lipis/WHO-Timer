@@ -26,7 +26,7 @@ html {
 }
 #timerGroup {
     position: absolute;
-    width: 400px;
+    width: 600px;
     height: 320px;
     top: 272px;
     left: 440px;
@@ -62,8 +62,9 @@ html {
     text-align: center;
 }
 #listOfCountries {
-    margin-top: 100px;
-    margin-left: 150px;
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-right: 60px;
     /*background-color: greenyellow;*/
 }
 .countryFieldP {

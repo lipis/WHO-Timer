@@ -105,6 +105,19 @@ body {
     height: 570px;
     top: 150px;
 }
+#gear {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 1206px;
+    top: 100px;
+    border: 5px solid black;
+}
+#b_gear {
+    width: 100px;
+    height: 100px;
+    background-color: #00365b;
+}
 #template {
     position: absolute;
     left: 0px;
