@@ -1,10 +1,10 @@
 ToDo:
 
 PRIORITY I:----------------------------------------|
-*List of speakers
 *Fix window permission problem
 *Change text buttons to icons in admin
 *Implement CLEAR differently
+*Change order of countries-all in table
 
 PRIORITY II:---------------------------------------|
 *Progress bar for public

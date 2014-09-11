@@ -333,25 +333,19 @@ function dropCurrent(ev) {
     var countryName = ev.dataTransfer.getData("text/plain");
     document.getElementById("countryCurrent").textContent = (countryName);
 
-    /*countryNameFormattedInP = "<p>" + countryName + "</p>";*/
-    /*$(ev.target).append(countryNameFormattedInP);*/
-    
-
     //display country in public window
     if (myTimer.publicTimerWindow) {
         myTimer.publicTimerWindow.document.getElementById("country_name").textContent = (countryName);
     }
 
+    /*countryNameFormattedInP = "<p>" + countryName + "</p>";*/
+    /*$(ev.target).append(countryNameFormattedInP);*/
     /*$('#myTimer.publicTimerWindow.country').append(dataFormated);*/
-
      /*myTimer.publicTimerWindow.document.getElementById("#country").appendChild(dataFormated);*/
     /*console.log("myTimer.publicTimerWindowOpen: " + myTimer.publicTimerWindowOpen);*/
-
     /*document.getElementById("template")*/
-
     /*t1 = myTimer.publicTimerWindow.getElementById("country");
     console.log(t1);*/
-
     /*console.log(myTimer.publicTimerWindow);*/
 }
 
@@ -359,8 +353,24 @@ function dropCurrent(ev) {
 function dropList(ev) {
     ev.preventDefault();
 
-    //get
+    //display countries in admin window
     var countryName = ev.dataTransfer.getData("text/plain");
-    countryNameFormattedInP = "<p class=\"test1\">" + countryName + "</p>";
-    $(ev.target).append(countryNameFormattedInP);
+
+    for (var i=1; i<=6; i++) {
+        if (document.getElementById("countryList" + i).textContent == "") {
+            document.getElementById("countryList" + i).textContent = countryName;
+            break;
+        }
+    }
+
+    //display country in public window
+    if (myTimer.publicTimerWindow) {
+        for (var i=1; i<=6; i++) {
+            if (myTimer.publicTimerWindow.document.getElementById("countryLP" + i).textContent == "") {
+                myTimer.publicTimerWindow.document.getElementById("countryLP" + i).textContent = countryName;
+                break;
+            }
+        }
+    }
+
 }
