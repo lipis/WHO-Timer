@@ -3,6 +3,8 @@ ToDo:
 PRIORITY I:----------------------------------------|
 *List of speakers
 *Fix window permission problem
+*Change text buttons to icons in admin
+*Implement CLEAR differently
 
 PRIORITY II:---------------------------------------|
 *Progress bar for public
@@ -16,4 +18,3 @@ PRIORITY II:---------------------------------------|
 *Admin keyboard shortcuts
 *Chair admin page
 *Start public window automatically/ask user to open for him if not open
-*Implement CLEAR differently

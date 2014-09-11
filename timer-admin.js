@@ -304,7 +304,7 @@ Timer.prototype.clear = function() {
 $(document).ready(function() {
 
     //create a new object of 'class' "timer"
-    myTimer = new Timer(0, 0, 0, 0, 0, "", 0, 0, 0, "00:00");
+    myTimer = new Timer(0, 0, 0, 0, 0, "", false, 0, 0, "00:00");
 
     //initialize button handlers
     myTimer.initializeButtonHandlers();
@@ -316,29 +316,31 @@ $(document).ready(function() {
 
 
 
-//below find the Country Speaker List implementation
+//Country Speaker List implementation
 function drag(ev) {
-    ev.dataTransfer.setData("text/html", ev.target.id);
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+    ev.dataTransfer.effectAllowed = "copy";
+    ev.dataTransfer.dropEffect = "copy";
 }
 function allowDrop(ev) {
     ev.preventDefault();
 }
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text/html");
-    ev.target.appendChild(document.getElementById(data));
+    var data = ev.dataTransfer.getData("text/plain");
+    dataFormated = "<p>" + data + "</p>";
+    $(ev.target).append(dataFormated);
+
+    /*$('#myTimer.publicTimerWindow.country').append(dataFormated);*/
 
 
-    var myCountryChild = "<p>" + data + "</p>";
+    /*if (myTimer.publicTimerWindow) {*/
+     /*myTimer.publicTimerWindow.document.getElementById("#country").appendChild(dataFormated);*/
+    console.log(myTimer.publicTimerWindowOpen);
 
-    /*if (myTimer.publicTimerWindow) {
-     myTimer.publicTimerWindow.document.getElementById("#listOfCountries").appendChild(myCountryChild);
-     }*/
+
+    /*t1 = myTimer.publicTimerWindow.getElementById("country");
+    console.log(t1);*/
 
     /*console.log(myTimer.publicTimerWindow);*/
-
-    $('#speakerConsole-countriesList').append(myCountryChild);
-
-
-
 }

@@ -72,8 +72,12 @@ body {
 #speakerConsole-all table {
     table-layout: fixed;
     padding: 5px;
+    border-collapse: collapse;
 }
-#alb, #and {
+#speakerConsole-all table td {
+    border: 1px solid black;
+}
+#Albania, #Andorra {
     width: 50%;
 }
 #speakerConsole-currentSpeaker, #speakerConsole-list {
