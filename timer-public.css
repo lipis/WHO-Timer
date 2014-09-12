@@ -27,11 +27,10 @@ html {
 #timerGroup {
     width: 1000px;
     height: 320px;
-    top: 272px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 272px;
-    /*background-color: pink;*/
+    margin-top: 250px;
+    background-color: pink;
 }
 #timerGroup table {
     margin-left: auto;
@@ -48,9 +47,10 @@ html {
 }
 #country_name {
     font-size: 75px;
-    color: white;
+    color: yellow;
     /*margin-left: 20px;*/
     text-align: center;
+    margin-top: 900px;
     /*background-color: green;*/
 }
 /*speakerArea*/

@@ -1,12 +1,15 @@
 ToDo:
 
 PRIORITY I:----------------------------------------|
-*Fix window permission problem
-*Change text buttons to icons in admin
 *Implement CLEAR differently
-*Change order of countries-all in table
+*Fix Andrei's bug(total time reduced to 0)
+*Start/Pause one button
+*Move country name further down in "current"
+
+
 
 PRIORITY II:---------------------------------------|
+*Fix window permission problem
 *Progress bar for public
 *Fix tick's one second delay when it starts
 *Increase and decrease timer live
