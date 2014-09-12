@@ -70,15 +70,15 @@ body {
     background-color: white;
 }
 #speakerConsole-all table {
+    float: left;
+    width: 210px;
     table-layout: fixed;
     padding: 5px;
     border-collapse: collapse;
 }
 #speakerConsole-all table td {
+    height: 100%;
     border: 1px solid black;
-}
-#Albania, #Andorra {
-    width: 50%;
 }
 #speakerConsole-currentSpeaker, #speakerConsole-list {
     width: 270px;
