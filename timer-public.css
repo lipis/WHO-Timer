@@ -22,15 +22,21 @@ html {
     left: 0px;
     border-bottom: 1px solid white;
     border-right: 1px solid white;
-    /*background-color: pink;*/
+    /*background-color: yellow;*/
 }
 #timerGroup {
-    position: absolute;
-    width: 600px;
+    width: 1000px;
     height: 320px;
     top: 272px;
-    left: 440px;
-    /*background-color: deeppink;*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 272px;
+    /*background-color: pink;*/
+}
+#timerGroup table {
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: red;*/
 }
 #timer_public {
     font-size: 170px;
@@ -44,7 +50,8 @@ html {
     font-size: 75px;
     color: white;
     /*margin-left: 20px;*/
-    /*background-color: lightpink;*/
+    text-align: center;
+    /*background-color: green;*/
 }
 /*speakerArea*/
 #speakerArea {
@@ -54,12 +61,16 @@ html {
     top: 0px;
     left: 1280px;
     border-bottom: 1px solid white;
+    border-top: 1px;
     /*background-color: green;*/
 }
 #speakerArea h1 {
     font-size: 50px;
     color: white;
     text-align: center;
+}
+#speakerArea hr {
+    width: 400px;
 }
 #listOfCountries {
     margin-top: 80px;
