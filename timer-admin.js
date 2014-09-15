@@ -213,6 +213,7 @@ Timer.prototype.paintTrafficLights = function() {
         document.getElementById("box_green").style.backgroundColor = 'white';
         document.getElementById("box_orange").style.backgroundColor = 'white';
         document.getElementById("box_red").style.backgroundColor = 'white';
+        $('#A').css("color", "white");
 
         //else if (TotalTime < 'currentTick' < Sum-upTime)
     } else if ((myTimer.currentTotalSeconds > 0) && (countMode_sec >= 0) && (myTimer.timerMode != 3)) {
@@ -224,6 +225,7 @@ Timer.prototype.paintTrafficLights = function() {
         document.getElementById("box_green").style.backgroundColor = '#99fe00';
         document.getElementById("box_orange").style.backgroundColor = 'white';
         document.getElementById("box_red").style.backgroundColor = 'white';
+        $('#A').css("color", "white");
 
         //else if (Sum-upTime < 'currentTick' < 0)
     } else if ((myTimer.currentTotalSeconds > 0) && (countMode_sec < 0) && (myTimer.timerMode != 3)) {
@@ -235,6 +237,7 @@ Timer.prototype.paintTrafficLights = function() {
         document.getElementById("box_green").style.backgroundColor = 'white';
         document.getElementById("box_orange").style.backgroundColor = '#f4d75f';
         document.getElementById("box_red").style.backgroundColor = 'white';
+        $('#A').css("color", "white");
 
         //if (0 < 'currentTick')
     } else if (myTimer.timerMode == 3) {
@@ -246,6 +249,7 @@ Timer.prototype.paintTrafficLights = function() {
         document.getElementById("box_green").style.backgroundColor = 'white';
         document.getElementById("box_orange").style.backgroundColor = 'white';
         document.getElementById("box_red").style.backgroundColor = '#fd030d';
+        $('#A').css("color", "red");
     }
 };
 //opens a new window showing the public Timer
