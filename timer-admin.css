@@ -43,7 +43,11 @@ body {
     font-size: 25px;
 }
 #A {
-    font-size: 50px;
+    /*font-size: 50px;*/
+    font-size: 170px; /*To delete after RC*/
+    color: white; /*To delete after RC*/
+    background-color: #00365b;  /*To delete after RC*/
+    font-family: "Times New Roman", Serif; /*To delete after RC*/
 }
 #timerConsole #b_t_up, #b_t_down, #b_s_up, #b_s_down {
     width: 75px;
