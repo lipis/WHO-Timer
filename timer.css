@@ -1,0 +1,160 @@
+/*In absolute positioning for FHD (1920x1080)*/
+body {
+    margin: 0;
+}
+html {
+    overflow: hidden;
+}
+#container {
+    position: relative;
+    /*background-color: #00558f;*//*(WHO public website blue)*/
+    background-color: #00365b; /*(WHO public website blue-darker)*/
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+/*controlsArea*/
+#controlsArea {
+    position: absolute;
+    border: 5px solid black;
+    top: 0px;
+    left: 0px;
+}
+#controlsArea #A, #A1 {
+    border: 1px solid black;
+}
+
+button {
+    background: none;
+    border: 5px solid black;
+}
+
+
+
+
+/*timerArea*/
+#timerArea {
+    position: absolute;
+    width: 1279px;
+    height: 863px;
+    top: 0px;
+    left: 0px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    /*background-color: yellow;*/
+}
+
+/*test*/
+#timerArea {
+    border: 1px solid yellow;
+}
+
+
+#timerGroup {
+    width: 1000px;
+    height: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
+    background-color: #00365b;
+}
+
+/*test*/
+#timerGroup {
+    border: 1px solid pink;
+}
+
+
+#timerGroup table {
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: red;*/
+}
+#timer_public {
+    font-size: 170px;
+    color: white;
+    /*background-color: #99fe00;*//**//*(green)*/
+    /*background-color: #f4d75f;*//**//*(orange)*/
+    /*background-color: #fd030d;*//**//*(red)*/
+    /*background-color: hotpink;*/
+}
+
+/*test*/
+#timer_public {
+    border: 1px solid green;
+}
+
+#country_name {
+    font-size: 75px;
+    color: yellow;
+    /*margin-left: 20px;*/
+    text-align: center;
+    margin-top: 900px;
+    /*background-color: green;*/
+}
+
+/*test*/
+#country_name {
+    border: 1px solid orange;
+}
+
+
+/*speakerArea*/
+#speakerArea {
+    position: absolute;
+    width: 640px;
+    height: 863px;
+    top: 0px;
+    left: 1280px;
+    border-bottom: 1px solid white;
+    border-top: 1px;
+    /*background-color: green;*/
+}
+#speakerArea h1 {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+#speakerArea hr {
+    width: 400px;
+}
+#listOfCountries {
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-right: 60px;
+    /*background-color: greenyellow;*/
+}
+.countryFieldP {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 30px;
+}
+#countryLP1 {
+
+}
+/*logoArea*/
+#logoArea {
+    position: absolute;
+    width: 1920px;
+    height: 216px;/*(1080/5-2, or the bottom 1/5 of the window -2px for the border)*/
+    top: 864px;
+    left: 0px;
+    /*background-color: brown;*/
+}
+#en, #fr, #ge, #ru {
+   /*float: left;
+   width: 25%;
+   height: 216px;
+   position: relative;*/
+}
+#en img, #fr img, #ge img, #ru img {
+    float: left;
+    height: 135px;
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)*/
+    padding: 38px;
+}
