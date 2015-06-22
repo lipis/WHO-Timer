@@ -2,7 +2,7 @@ ToDo:
 
 PRIORITY I:----------------------------------------|
 *Implement CLEAR differently
-*Fix Andrei's bug(total time reduced to 0)
+*Fix bug(when total time reduced to 0)
 *Start/Pause one button
 *Move country name further down in "current"
 

@@ -30,7 +30,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     margin-top: 250px;
-    background-color: pink;
+    /*background-color: pink;*/
 }
 #timerGroup table {
     margin-left: auto;
@@ -47,7 +47,7 @@ html {
 }
 #country_name {
     font-size: 75px;
-    color: yellow;
+    color: white;
     /*margin-left: 20px;*/
     text-align: center;
     margin-top: 900px;
