@@ -20,8 +20,8 @@ html {
     height: 863px;
     top: 0px;
     left: 0px;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
+    /*border-bottom: 1px solid white;
+    border-right: 1px solid white;*/
     /*background-color: yellow;*/
 }
 #timerGroup {
@@ -30,7 +30,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     margin-top: 250px;
-    background-color: pink;
+    /*background-color: pink;*/
 }
 #timerGroup table {
     margin-left: auto;
@@ -38,7 +38,7 @@ html {
     /*background-color: red;*/
 }
 #timer_public {
-    font-size: 170px;
+    font-size: 400px;
     color: white;
     /*background-color: #99fe00;*//**//*(green)*/
     /*background-color: #f4d75f;*//**//*(orange)*/
@@ -47,7 +47,7 @@ html {
 }
 #country_name {
     font-size: 75px;
-    color: yellow;
+    color: white;
     /*margin-left: 20px;*/
     text-align: center;
     margin-top: 900px;
