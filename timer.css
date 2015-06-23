@@ -13,25 +13,19 @@ html {
     height: 1080px;
     overflow: hidden;
 }
-
-
 #controlsAreaPod {
     top: 0px;
     left: 0px;
     position: absolute;
-    width: 200px;
+    width: 190px;
     height: 250px;
-    border: 10px solid purple;
-    background-color: darkolivegreen;
 }
 #controlsArea {
     position: relative;
     top: 5px;
     left: 5px;
-    width: 190px;
+    width: 180px;
     height: 240px;
-    border: 5px solid yellow;
-    background-color: greenyellow;
 }
 
 
@@ -52,21 +46,12 @@ button {
 /*timerArea*/
 #timerArea {
     position: absolute;
-    width: 1279px;
+    width: 1079px;
     height: 863px;
     top: 0px;
-    left: 0px;
-    border-bottom: 1px solid white;
+    left: 200px;
     border-right: 1px solid white;
-    /*background-color: yellow;*/
 }
-
-/*test*/
-#timerArea {
-    border: 1px solid yellow;
-}
-
-
 #timerGroup {
     width: 1000px;
     height: 320px;
@@ -75,17 +60,9 @@ button {
     margin-top: 250px;
     background-color: #00365b;
 }
-
-/*test*/
-#timerGroup {
-    border: 1px solid pink;
-}
-
-
 #timerGroup table {
     margin-left: auto;
     margin-right: auto;
-    /*background-color: red;*/
 }
 #timer_public {
     font-size: 170px;
@@ -95,27 +72,13 @@ button {
     /*background-color: #fd030d;*//**//*(red)*/
     /*background-color: hotpink;*/
 }
-
-/*test*/
-#timer_public {
-    border: 1px solid green;
-}
-
 #country_name {
     font-size: 75px;
     color: yellow;
     /*margin-left: 20px;*/
     text-align: center;
     margin-top: 900px;
-    /*background-color: green;*/
 }
-
-/*test*/
-#country_name {
-    border: 1px solid orange;
-}
-
-
 /*speakerArea*/
 #speakerArea {
     position: absolute;
@@ -123,9 +86,6 @@ button {
     height: 863px;
     top: 0px;
     left: 1280px;
-    border-bottom: 1px solid white;
-    border-top: 1px;
-    /*background-color: green;*/
 }
 #speakerArea h1 {
     font-size: 50px;
@@ -139,7 +99,6 @@ button {
     margin-top: 80px;
     margin-left: 100px;
     margin-right: 60px;
-    /*background-color: greenyellow;*/
 }
 .countryFieldP {
     color: white;
@@ -156,7 +115,7 @@ button {
     height: 216px;/*(1080/5-2, or the bottom 1/5 of the window -2px for the border)*/
     top: 864px;
     left: 0px;
-    border: 1px solid turquoise;
+    border-top: 1px solid white;
 }
 #en, #fr, #ge, #ru {
    /*float: left;
