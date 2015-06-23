@@ -11,4 +11,18 @@ $(document).ready(function() {
     console.log('//check this in 100% zoom:');
     console.log('-document width: ' + a +', document height: ' + b + '.');
     console.log('-window width: ' + c + ', window height: ' + d + '.');
+
+    $( "#controlsArea" ).hide();
+
+    //hide the controlsArea DIV
+    $( "#controlsAreaPod" ).mouseover(function() {
+        console.log("Over!");
+        $( "#controlsArea" ).show();
+    });
+    $( "#controlsAreaPod" ).mouseout(function() {
+        console.log("Out!");
+        $( "#controlsArea" ).hide();
+    });
+
+
 });
