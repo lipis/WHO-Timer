@@ -22,6 +22,21 @@ $(document).ready(function() {
         $( "#controlsArea" ).hide();
     });
 
+    /*$(function()
+    {
+        $(document).keydown(function(event)
+        {
+            console.log(event.keyCode);
+            if (event.keyCode == 32) {
+                myTimer.startCountdown();
+                *//*var e = jQuery.Event( "click" );
+                jQuery('#b_start').trigger( e );*//*
+            }
+        });
+    });*/
+
+
+
     //test - check for the document window size
     var a = $(document).width();
     var b = $(document).height();
@@ -30,7 +45,6 @@ $(document).ready(function() {
     console.log('//check this in 100% zoom:');
     console.log('-document width: ' + a +', document height: ' + b + '.');
     console.log('-window width: ' + c + ', window height: ' + d + '.');
-
 });
 
 //constructor - 'class': timer

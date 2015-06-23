@@ -31,6 +31,7 @@ html {
     padding: 0px;
     border: 5px solid black;
     text-align: center;
+    opacity: 0.2;
 }
 .console #A, #A1 {
     font-size: 20px;
@@ -40,6 +41,9 @@ html {
     background: none;
     border: 0px solid black;
 }
+/*.console img {
+    width: 20px;
+}*/
 
 
 
