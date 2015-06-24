@@ -29,53 +29,39 @@
       <file leaf-file-name="timer.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/timer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.677419" vertical-offset="0" max-vertical-offset="462">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+            <state vertical-scroll-proportion="-12.064516" vertical-offset="0" max-vertical-offset="506">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
-                <element signature="tag#head#0;tag#html#0;tag#html#0" expanded="false" />
-                <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-                <element signature="tag#div#1;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-                <element signature="tag#div#2;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-                <element signature="tag#div#3;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
+                <element signature="tag#div#0;tag#div#0;tag#body#0" expanded="false" />
+                <element signature="tag#div#1;tag#div#0;tag#body#0" expanded="false" />
+                <element signature="tag#div#2;tag#div#0;tag#body#0" expanded="false" />
+                <element signature="tag#div#3;tag#div#0;tag#body#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timer.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="timer.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/timer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="8580">
-              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.8543046" vertical-offset="3362" max-vertical-offset="4268">
+              <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
               <folding>
-                <element signature="e#11406#11455#0" expanded="false" />
-                <element signature="e#11460#11525#0" expanded="false" />
-                <element signature="e#11530#11622#0" expanded="false" />
-                <element signature="e#11627#11710#0" expanded="false" />
-                <element signature="e#11715#11754#0" expanded="false" />
-                <element signature="e#11759#11842#0" expanded="false" />
-                <element signature="e#11847#11890#0" expanded="false" />
-                <element signature="n#!!block;n#dropList#0" expanded="false" />
-                <element signature="e#12118#12312#0" expanded="false" />
-                <element signature="e#12194#12306#0" expanded="false" />
-                <element signature="e#12388#12691#0" expanded="false" />
-                <element signature="e#12423#12685#0" expanded="false" />
-                <element signature="e#12527#12675#0" expanded="false" />
-                <element signature="n#!!block;n#gearUp#0" expanded="false" />
-                <element signature="e#12738#12747#0" expanded="false" />
-                <element signature="e#12930#13114#0" expanded="false" />
-                <element signature="e#13120#13126#0" expanded="false" />
-                <element signature="e#13813#14725#0" expanded="false" />
+                <element signature="n#!!block;n#Timer#0" expanded="false" />
+                <element signature="e#1428#3919#0" expanded="false" />
+                <element signature="e#3995#4141#0" expanded="false" />
+                <element signature="e#4205#4469#0" expanded="false" />
+                <element signature="e#8558#8620#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timer.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="timer.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/timer.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.812362" vertical-offset="210" max-vertical-offset="3212">
-              <caret line="43" column="2" selection-start-line="43" selection-start-column="0" selection-end-line="45" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="3212">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -101,9 +87,9 @@
         <option value="$PROJECT_DIR$/test1.html" />
         <option value="$PROJECT_DIR$/test1.css" />
         <option value="$PROJECT_DIR$/test1.js" />
+        <option value="$PROJECT_DIR$/timer.css" />
         <option value="$PROJECT_DIR$/timer.html" />
         <option value="$PROJECT_DIR$/timer.js" />
-        <option value="$PROJECT_DIR$/timer.css" />
       </list>
     </option>
   </component>
@@ -234,7 +220,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -242,7 +228,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32939914" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -281,11 +267,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="462">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
-            <element signature="tag#head#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#1;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#2;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#3;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#1;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#2;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#3;tag#div#0;tag#body#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -295,24 +280,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="682" max-vertical-offset="9394">
           <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
           <folding>
-            <element signature="e#11406#11455#0" expanded="false" />
-            <element signature="e#11460#11525#0" expanded="false" />
-            <element signature="e#11530#11622#0" expanded="false" />
-            <element signature="e#11627#11710#0" expanded="false" />
-            <element signature="e#11715#11754#0" expanded="false" />
-            <element signature="e#11759#11842#0" expanded="false" />
-            <element signature="e#11847#11890#0" expanded="false" />
-            <element signature="n#!!block;n#dropList#0" expanded="false" />
-            <element signature="e#12118#12312#0" expanded="false" />
-            <element signature="e#12194#12306#0" expanded="false" />
-            <element signature="e#12388#12691#0" expanded="false" />
-            <element signature="e#12423#12685#0" expanded="false" />
-            <element signature="e#12527#12675#0" expanded="false" />
-            <element signature="n#!!block;n#gearUp#0" expanded="false" />
-            <element signature="e#12738#12747#0" expanded="false" />
-            <element signature="e#12930#13114#0" expanded="false" />
-            <element signature="e#13120#13126#0" expanded="false" />
-            <element signature="e#13813#14725#0" expanded="false" />
+            <element signature="n#!!block;n#Timer#0" expanded="false" />
+            <element signature="e#1428#3919#0" expanded="false" />
+            <element signature="e#3995#4141#0" expanded="false" />
+            <element signature="e#4205#4469#0" expanded="false" />
+            <element signature="e#8558#8620#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -330,11 +302,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1232">
           <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
-            <element signature="tag#head#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#1;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#2;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#3;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#1;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#2;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#3;tag#div#0;tag#body#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -344,24 +315,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4378" max-vertical-offset="9372">
           <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
           <folding>
-            <element signature="e#11406#11455#0" expanded="false" />
-            <element signature="e#11460#11525#0" expanded="false" />
-            <element signature="e#11530#11622#0" expanded="false" />
-            <element signature="e#11627#11710#0" expanded="false" />
-            <element signature="e#11715#11754#0" expanded="false" />
-            <element signature="e#11759#11842#0" expanded="false" />
-            <element signature="e#11847#11890#0" expanded="false" />
-            <element signature="n#!!block;n#dropList#0" expanded="false" />
-            <element signature="e#12118#12312#0" expanded="false" />
-            <element signature="e#12194#12306#0" expanded="false" />
-            <element signature="e#12388#12691#0" expanded="false" />
-            <element signature="e#12423#12685#0" expanded="false" />
-            <element signature="e#12527#12675#0" expanded="false" />
-            <element signature="n#!!block;n#gearUp#0" expanded="false" />
-            <element signature="e#12738#12747#0" expanded="false" />
-            <element signature="e#12930#13114#0" expanded="false" />
-            <element signature="e#13120#13126#0" expanded="false" />
-            <element signature="e#13813#14725#0" expanded="false" />
+            <element signature="n#!!block;n#Timer#0" expanded="false" />
+            <element signature="e#1428#3919#0" expanded="false" />
+            <element signature="e#3995#4141#0" expanded="false" />
+            <element signature="e#4205#4469#0" expanded="false" />
+            <element signature="e#8558#8620#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -379,11 +337,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1848">
           <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding>
-            <element signature="tag#head#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#1;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#2;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#3;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#1;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#2;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#3;tag#div#0;tag#body#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -393,24 +350,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="660">
           <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
           <folding>
-            <element signature="e#11406#11455#0" expanded="false" />
-            <element signature="e#11460#11525#0" expanded="false" />
-            <element signature="e#11530#11622#0" expanded="false" />
-            <element signature="e#11627#11710#0" expanded="false" />
-            <element signature="e#11715#11754#0" expanded="false" />
-            <element signature="e#11759#11842#0" expanded="false" />
-            <element signature="e#11847#11890#0" expanded="false" />
-            <element signature="n#!!block;n#dropList#0" expanded="false" />
-            <element signature="e#12118#12312#0" expanded="false" />
-            <element signature="e#12194#12306#0" expanded="false" />
-            <element signature="e#12388#12691#0" expanded="false" />
-            <element signature="e#12423#12685#0" expanded="false" />
-            <element signature="e#12527#12675#0" expanded="false" />
-            <element signature="n#!!block;n#gearUp#0" expanded="false" />
-            <element signature="e#12738#12747#0" expanded="false" />
-            <element signature="e#12930#13114#0" expanded="false" />
-            <element signature="e#13120#13126#0" expanded="false" />
-            <element signature="e#13813#14725#0" expanded="false" />
+            <element signature="n#!!block;n#Timer#0" expanded="false" />
+            <element signature="e#1428#3919#0" expanded="false" />
+            <element signature="e#3995#4141#0" expanded="false" />
+            <element signature="e#4205#4469#0" expanded="false" />
+            <element signature="e#8558#8620#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -705,52 +649,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/timer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="3212">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/timer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.677419" vertical-offset="0" max-vertical-offset="462">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state vertical-scroll-proportion="-12.064516" vertical-offset="0" max-vertical-offset="506">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
-            <element signature="tag#head#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#1;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#2;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
-            <element signature="tag#div#3;tag#div#0;tag#body#0;tag#html#0;tag#html#0" expanded="false" />
+            <element signature="tag#div#0;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#1;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#2;tag#div#0;tag#body#0" expanded="false" />
+            <element signature="tag#div#3;tag#div#0;tag#body#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/timer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="8580">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.8543046" vertical-offset="3362" max-vertical-offset="4268">
+          <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
           <folding>
-            <element signature="e#11406#11455#0" expanded="false" />
-            <element signature="e#11460#11525#0" expanded="false" />
-            <element signature="e#11530#11622#0" expanded="false" />
-            <element signature="e#11627#11710#0" expanded="false" />
-            <element signature="e#11715#11754#0" expanded="false" />
-            <element signature="e#11759#11842#0" expanded="false" />
-            <element signature="e#11847#11890#0" expanded="false" />
-            <element signature="n#!!block;n#dropList#0" expanded="false" />
-            <element signature="e#12118#12312#0" expanded="false" />
-            <element signature="e#12194#12306#0" expanded="false" />
-            <element signature="e#12388#12691#0" expanded="false" />
-            <element signature="e#12423#12685#0" expanded="false" />
-            <element signature="e#12527#12675#0" expanded="false" />
-            <element signature="n#!!block;n#gearUp#0" expanded="false" />
-            <element signature="e#12738#12747#0" expanded="false" />
-            <element signature="e#12930#13114#0" expanded="false" />
-            <element signature="e#13120#13126#0" expanded="false" />
-            <element signature="e#13813#14725#0" expanded="false" />
+            <element signature="n#!!block;n#Timer#0" expanded="false" />
+            <element signature="e#1428#3919#0" expanded="false" />
+            <element signature="e#3995#4141#0" expanded="false" />
+            <element signature="e#4205#4469#0" expanded="false" />
+            <element signature="e#8558#8620#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/timer.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.812362" vertical-offset="210" max-vertical-offset="3212">
-          <caret line="43" column="2" selection-start-line="43" selection-start-column="0" selection-end-line="45" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>

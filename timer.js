@@ -2,40 +2,18 @@
 $(document).ready(function() {
 
     //create a new object of 'class' "timer"
-    myTimer = new Timer(0, 0, 0, 0, 0, "", false, 0, 0, "00:00");
+    myTimer = new Timer(0, 0, 0, 0, 0, 0, 0, "00:00");
 
-    //initialize button handlers
-    myTimer.initializeButtonHandlers();
+    //initialize all listeners
+    myTimer.initializeListeners();
 
+    //reset displays
     myTimer.resetDisplays();
 
-    //hide the controlsArea, speakerArea and logoArea DIVs upon initiation
+    //hide the controlsArea, speakerArea and logoArea DIVs
     $( "#controlsArea" ).hide();
     $( "#speakerArea" ).hide();
     $( "#logoArea" ).hide();
-
-    //add the "show" & "hide" listeners to the controlAreaPod DIV
-    $( "#controlsAreaPod" ).mouseover(function() {
-    $( "#controlsArea" ).show();
-    });
-    $( "#controlsAreaPod" ).mouseout(function() {
-        $( "#controlsArea" ).hide();
-    });
-
-    /*$(function()
-    {
-        $(document).keydown(function(event)
-        {
-            console.log(event.keyCode);
-            if (event.keyCode == 32) {
-                myTimer.startCountdown();
-                *//*var e = jQuery.Event( "click" );
-                jQuery('#b_start').trigger( e );*//*
-            }
-        });
-    });*/
-
-
 
     //test - check for the document window size
     var a = $(document).width();
@@ -49,23 +27,23 @@ $(document).ready(function() {
 
 //constructor - 'class': timer
 function Timer(totalTimeRequested, sumupTimeRequested, currentTotalSeconds, sumupSeconds, intervalHandle,
-               publicTimerWindow, publicTimerWindowOpen, timerMode, pauseOn, resetString) {
+               timerMode, pauseOn, resetString) {
     this.totalTimeRequested = totalTimeRequested;
     this.sumupTimeRequested = sumupTimeRequested;
     this.currentTotalSeconds = currentTotalSeconds;
     this.sumupSeconds = sumupSeconds;
     this.intervalHandle = intervalHandle;
-    this.publicTimerWindow = publicTimerWindow;
-    this.publicTimerWindowOpen = publicTimerWindowOpen;
     this.timerMode = timerMode;
     this.pauseOn = pauseOn;
+    this.resetString = resetString;
 }
 
 //methods - 'class': timer
-//initialize button handlers
-Timer.prototype.initializeButtonHandlers = function(){
 
-    //create onclick() even handlers for all buttons:
+//initializeListeners
+Timer.prototype.initializeListeners = function(){
+
+    //create onclick() event handlers for all buttons:
     //Total time UP
     $("#b_t_up").click(function () {
         //set total time up
@@ -118,7 +96,6 @@ Timer.prototype.initializeButtonHandlers = function(){
     //REPEAT button
     $('#b_repeat').click(function () {
         myTimer.repeat();
-        gearUp();
     });
     //CLEAR button
     $('#b_clear').click(function () {
@@ -132,7 +109,30 @@ Timer.prototype.initializeButtonHandlers = function(){
     $('#b_S').click(function () {
         $('#speakerArea').toggle();
     });
+
+    //create the "show" & "hide" listeners to the controlAreaPod DIV
+    $( "#controlsAreaPod" ).mouseover(function() {
+        $( "#controlsArea" ).show();
+    });
+    $( "#controlsAreaPod" ).mouseout(function() {
+        $( "#controlsArea" ).hide();
+    });
+
+    //add keyboard listeners
+    /*$(function()
+     {
+     $(document).keydown(function(event)
+     {
+     console.log(event.keyCode);
+     if (event.keyCode == 32) {
+     myTimer.startCountdown();
+     *//*var e = jQuery.Event( "click" );
+     jQuery('#b_start').trigger( e );*//*
+     }
+     });
+     });*/
 };
+
 //format display
 Timer.prototype.formatDisplay = function(display, time) {
 
@@ -142,6 +142,7 @@ Timer.prototype.formatDisplay = function(display, time) {
         $('#'+display).html(time + ":" + "00");
     }
 };
+
 //reset displays
 Timer.prototype.resetDisplays = function () {
 
@@ -153,6 +154,7 @@ Timer.prototype.resetDisplays = function () {
     document.getElementById("timer_public").textContent = myTimer.resetString;
 
 };
+
 //start the timer
 Timer.prototype.startCountdown = function() {
 
@@ -244,6 +246,7 @@ Timer.prototype.tick = function () {
     //update the display traffic light colors
     myTimer.paintTrafficLights();
 };
+
 //change public timer to the appropriate color
 Timer.prototype.paintTrafficLights = function() {
 
@@ -254,63 +257,23 @@ Timer.prototype.paintTrafficLights = function() {
         //in public
         document.getElementById("timer_public").style.color = 'white';
 
-        //in admin
-        document.getElementById("box_green").style.backgroundColor = 'white';
-        document.getElementById("box_orange").style.backgroundColor = 'white';
-        document.getElementById("box_red").style.backgroundColor = 'white';
-
         //else if (TotalTime < 'currentTick' < Sum-upTime)
     } else if ((myTimer.currentTotalSeconds > 0) && (countMode_sec >= 0) && (myTimer.timerMode != 3)) {
         //in public
         document.getElementById("timer_public").style.color = 'white';
-
-        //in admin
-        document.getElementById("box_green").style.backgroundColor = '#99fe00';
-        document.getElementById("box_orange").style.backgroundColor = 'white';
-        document.getElementById("box_red").style.backgroundColor = 'white';
 
         //else if (Sum-upTime < 'currentTick' < 0)
     } else if ((myTimer.currentTotalSeconds > 0) && (countMode_sec < 0) && (myTimer.timerMode != 3)) {
         //in public
         document.getElementById("timer_public").style.color = 'white';
 
-        //in admin
-        document.getElementById("box_green").style.backgroundColor = 'white';
-        document.getElementById("box_orange").style.backgroundColor = '#f4d75f';
-        document.getElementById("box_red").style.backgroundColor = 'white';
-
         //if (0 < 'currentTick')
     } else if (myTimer.timerMode == 3) {
         //in public
         document.getElementById("timer_public").style.color = '#fd030d';
-
-        //in admin
-        document.getElementById("box_green").style.backgroundColor = 'white';
-        document.getElementById("box_orange").style.backgroundColor = 'white';
-        document.getElementById("box_red").style.backgroundColor = '#fd030d';
     }
 };
-//opens a new window showing the public Timer
-Timer.prototype.openPublicTimerWindow = function() {
 
-    //if public timer window already open, do nothing
-    if (!myTimer.publicTimerWindowOpen) {
-        myTimer. publicTimerWindow = window.open("timer-public.html", "publicTimerWin");
-        myTimer.publicTimerWindowOpen = true;
-        $('#openPublic').attr('disabled','disabled');
-        $('#closePublic').removeAttr("disabled");
-    }
-};
-//closes the public Timer window
-Timer.prototype.closePublicTimerWindow = function() {
-
-    if (myTimer.publicTimerWindow) {
-        myTimer.publicTimerWindow.close();
-        myTimer.publicTimerWindowOpen = false;
-        $('#closePublic').attr('disabled','disabled');
-        $('#openPublic').removeAttr("disabled");
-    }
-};
 //repeat function
 Timer.prototype.repeat = function() {
 
@@ -319,7 +282,6 @@ Timer.prototype.repeat = function() {
 
     //reset flags to initial state
     myTimer.timerMode = 0;
-    myTimer.publicTimerWindowOpen = false;
     myTimer.pauseOn = false;
 
 
@@ -336,100 +298,10 @@ Timer.prototype.repeat = function() {
     $('#b_pause').attr('disabled','disabled');
     $('#b_start').removeAttr("disabled");
 };
+
 //clear function
 Timer.prototype.clear = function() {
     //ToDo
     //refresh/reset page
     location.reload();
 };
-
-
-
-//Country Speaker List implementation
-function drag(ev) {
-    ev.dataTransfer.setData("text/plain", ev.target.id);
-    ev.dataTransfer.effectAllowed = "copy";
-    ev.dataTransfer.dropEffect = "copy";
-}
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-//drop method for "Current Speaker Country"
-function dropCurrent(ev) {
-    ev.preventDefault();
-
-    //display country in admin window
-    var countryName = ev.dataTransfer.getData("text/plain");
-    document.getElementById("countryCurrent").textContent = countryName;
-
-    //display country in public window
-    if (myTimer.publicTimerWindow) {
-        myTimer.publicTimerWindow.document.getElementById("country_name").textContent = countryName;
-    }
-
-    /*countryNameFormattedInP = "<p>" + countryName + "</p>";*/
-    /*$(ev.target).append(countryNameFormattedInP);*/
-    /*$('#myTimer.publicTimerWindow.country').append(dataFormated);*/
-    /*myTimer.publicTimerWindow.document.getElementById("#country").appendChild(dataFormated);*/
-    /*console.log("myTimer.publicTimerWindowOpen: " + myTimer.publicTimerWindowOpen);*/
-    /*document.getElementById("template")*/
-    /*t1 = myTimer.publicTimerWindow.getElementById("country");
-     console.log(t1);*/
-    /*console.log(myTimer.publicTimerWindow);*/
-}
-
-//drop method for "Active list of speakers"
-function dropList(ev) {
-    ev.preventDefault();
-    var countryName = ev.dataTransfer.getData("text/plain");
-
-    //display countries in admin window
-    for (var i=1; i<=6; i++) {
-        if (document.getElementById("countryList" + i).textContent == "") {
-            document.getElementById("countryList" + i).textContent = countryName;
-            break;
-        }
-    }
-
-    //display country in public window
-    if (myTimer.publicTimerWindow) {
-        for (var i=1; i<=6; i++) {
-            if (myTimer.publicTimerWindow.document.getElementById("countryLP" + i).textContent == "") {
-                myTimer.publicTimerWindow.document.getElementById("countryLP" + i).textContent = countryName;
-                break;
-            }
-        }
-    }
-}
-
-//"gear" countries
-function gearUp() {
-    //current
-    // in admin
-    document.getElementById("countryCurrent").textContent = document.getElementById("countryList1").textContent;
-
-    // in public
-    if (myTimer.publicTimerWindow) {
-        myTimer.publicTimerWindow.document.getElementById("country_name").textContent =
-            myTimer.publicTimerWindow.document.getElementById("countryLP1").textContent;
-    }
-
-    //list
-    // in admin
-    document.getElementById("countryList1").textContent = document.getElementById("countryList2").textContent;
-    document.getElementById("countryList2").textContent = document.getElementById("countryList3").textContent;
-    document.getElementById("countryList3").textContent = document.getElementById("countryList4").textContent;
-    document.getElementById("countryList4").textContent = document.getElementById("countryList5").textContent;
-    document.getElementById("countryList5").textContent = document.getElementById("countryList6").textContent;
-    document.getElementById("countryList6").textContent = "";
-
-    // in public
-    if (myTimer.publicTimerWindow) {
-        myTimer.publicTimerWindow.document.getElementById("countryLP1").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP2").textContent;
-        myTimer.publicTimerWindow.document.getElementById("countryLP2").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP3").textContent;
-        myTimer.publicTimerWindow.document.getElementById("countryLP3").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP4").textContent;
-        myTimer.publicTimerWindow.document.getElementById("countryLP4").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP5").textContent;
-        myTimer.publicTimerWindow.document.getElementById("countryLP5").textContent = myTimer.publicTimerWindow.document.getElementById("countryLP6").textContent;
-        myTimer.publicTimerWindow.document.getElementById("countryLP6").textContent = "";
-    }
-}
