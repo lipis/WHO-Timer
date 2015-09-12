@@ -1,293 +1,157 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+  <head lang="en">
     <meta charset="UTF-8">
     <title>WHO-Timer-admin</title>
-	<link href="timer-admin.css" rel="stylesheet">
+    <link href="timer-admin.css" rel="stylesheet">
     <script src="jquery/jquery-2.1.1.js"></script>
     <script src="timer-admin.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-		<div id="timerConsole">
-        	<table class="console">
-                <tr><td></td><td></td><td></td><td></td></tr>
+      <div id="timerConsole">
+        <table class="console">
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr>
+            <td colspan="4">
+              <h2>WHO-Timer</h2>
+              <h3>Admin Console</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <table id="colorDivs">
                 <tr>
-                    <td colspan="4">
-                        <h2>WHO-Timer</h2>
-                        <h3>Admin Console</h3>
-                    </td>
+                  <td><div class="trafficLightBox" id="box_green"></div></td>
+                  <td><div class="trafficLightBox" id="box_orange"></div></td>
+                  <td><div class="trafficLightBox" id="box_red"></div></td>
                 </tr>
-				<tr>
-					<td colspan="4">
-						<table id="colorDivs">
-							<tr>
-								<td><div class="trafficLightBox" id="box_green"></div></td>
-								<td><div class="trafficLightBox" id="box_orange"></div></td>
-								<td><div class="trafficLightBox" id="box_red"></div></td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-					<td colspan="4"><span id="A">00:00</span></td>
-				</tr>
-				<tr>
-                    <td></td>
-					<td colspan="2">
-                        <span id="A1">00:00</span>
-                    </td>
-                    <td></td>
-				</tr>
-                <tr>
-                    <td></td>
-                    <td colspan="2">ASSIGNED TIME</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td colspan="2">
-                        <button id="b_t_up"><img src="images/buttons/up.png"></button>
-                        <button id="b_t_down"><img src="images/buttons/down.png"></button>
-                    </td>
-                    <td></td>
-                </tr>
-				<tr>
-					<td colspan="4">
-						<button id="b_start"><img src="images/buttons/startG.png"></button>
-						<button id="b_pause"><img src="images/buttons/pauseO.png"></button>
-                    </td>
-				</tr>
-                <tr>
-                    <td colspan="4">
-                        <button id="b_repeat"><img src="images/buttons/repeatR.png"></button>
-                    </td>
-                </tr>
-				<tr>
-                    <td colspan="1">
-                        <button id="b_clear">CLEAR</button>
-                    </td>
-					<td colspan="4">
-						<button id="openPublic">Open/Reset public Timer</button>
-						<button id="closePublic">Close public Timer</button>
-					</td>
-				</tr>
-                <tr><td colspan="4"></td></tr>
-                <tr><td></td><td></td><td></td><td></td></tr>
-			</table>
-		</div>
-		<div id="speakerConsole-all">
-				<h3>Member States</h3>
-				<table>
-					<tr><td id="Albania" draggable="true" ondragstart="drag(event)">Albania</td></tr>
-                    <tr><td id="Andorra" draggable="true" ondragstart="drag(event)">Andorra</td></tr>
-					<tr><td id="Armenia" draggable="true" ondragstart="drag(event)">Armenia</td></tr>
-                    <tr><td id="Austria" draggable="true" ondragstart="drag(event)">Austria</td></tr>
-					<tr><td id="Azerbaijan" draggable="true" ondragstart="drag(event)">Azerbaijan</td></tr>
-                    <tr><td id="Belarus" draggable="true" ondragstart="drag(event)">Belarus</td></tr>
-                    <tr><td id="Belgium" draggable="true" ondragstart="drag(event)">Belgium</td></tr>
-                    <tr><td id="Bosnia and Herzegovina" draggable="true" ondragstart="drag(event)">Bosnia and Herzegovina</td></tr>
-                    <tr><td id="Bulgaria" draggable="true" ondragstart="drag(event)">Bulgaria</td></tr>
-                    <tr><td id="Croatia" draggable="true" ondragstart="drag(event)">Croatia</td></tr>
-                    <tr><td id="Cyprus" draggable="true" ondragstart="drag(event)">Cyprus</td></tr>
-                    <tr><td id="Czech Republic" draggable="true" ondragstart="drag(event)">Czech Republic</td></tr>
-                    <tr><td id="Denmark" draggable="true" ondragstart="drag(event)">Denmark</td></tr>
-                    <tr><td id="Estonia" draggable="true" ondragstart="drag(event)">Estonia</td></tr>
-                    <tr><td id="Finland" draggable="true" ondragstart="drag(event)">Finland</td></tr>
-                    <tr><td id="France" draggable="true" ondragstart="drag(event)">France</td></tr>
-                    <tr><td id="Georgia" draggable="true" ondragstart="drag(event)">Georgia</td></tr>
-                    <tr><td id="Germany" draggable="true" ondragstart="drag(event)">Germany</td></tr>
-                    <tr><td id="Greece" draggable="true" ondragstart="drag(event)">Greece</td></tr>
-                    <tr><td id="Hungary" draggable="true" ondragstart="drag(event)">Hungary</td></tr>
-                    <tr><td id="Iceland" draggable="true" ondragstart="drag(event)">Iceland</td></tr>
-                    <tr><td id="Ireland" draggable="true" ondragstart="drag(event)">Ireland</td></tr>
-                    <tr><td id="Israel" draggable="true" ondragstart="drag(event)">Israel</td></tr>
-                    <tr><td id="Italy" draggable="true" ondragstart="drag(event)">Italy</td></tr>
-                    <tr><td id="Kazakhstan" draggable="true" ondragstart="drag(event)">Kazakhstan</td></tr>
-                    <tr><td id="Kyrgyzstan" draggable="true" ondragstart="drag(event)">Kyrgyzstan</td></tr>
-                    <tr><td id="Latvia" draggable="true" ondragstart="drag(event)">Latvia</td></tr>
-                </table>
-                <table>
-                    <tr><td id="Lithuania" draggable="true" ondragstart="drag(event)">Lithuania</td></tr>
-                    <tr><td id="Luxembourg" draggable="true" ondragstart="drag(event)">Luxembourg</td></tr>
-                    <tr><td id="Malta" draggable="true" ondragstart="drag(event)">Malta</td></tr>
-                    <tr><td id="Monaco" draggable="true" ondragstart="drag(event)">Monaco</td></tr>
-                    <tr><td id="Montenegro" draggable="true" ondragstart="drag(event)">Montenegro</td></tr>
-                    <tr><td id="Netherlands" draggable="true" ondragstart="drag(event)">Netherlands</td></tr>
-                    <tr><td id="Norway" draggable="true" ondragstart="drag(event)">Norway</td></tr>
-                    <tr><td id="Poland" draggable="true" ondragstart="drag(event)">Poland</td></tr>
-                    <tr><td id="Portugal" draggable="true" ondragstart="drag(event)">Portugal</td></tr>
-                    <tr><td id="Republic of Moldova" draggable="true" ondragstart="drag(event)">Republic of Moldova</td></tr>
-                    <tr><td id="Romania" draggable="true" ondragstart="drag(event)">Romania</td></tr>
-                    <tr><td id="Russian Federation" draggable="true" ondragstart="drag(event)">Russian Federation</td></tr>
-                    <tr><td id="San Marino" draggable="true" ondragstart="drag(event)">San Marino</td></tr>
-                    <tr><td id="Serbia" draggable="true" ondragstart="drag(event)">Serbia</td></tr>
-                    <tr><td id="Slovakia" draggable="true" ondragstart="drag(event)">Slovakia</td></tr>
-                    <tr><td id="Slovenia" draggable="true" ondragstart="drag(event)">Slovenia</td></tr>
-                    <tr><td id="Spain" draggable="true" ondragstart="drag(event)">Spain</td></tr>
-                    <tr><td id="Sweden" draggable="true" ondragstart="drag(event)">Sweden</td></tr>
-                    <tr><td id="Switzerland" draggable="true" ondragstart="drag(event)">Switzerland</td></tr>
-                    <tr><td id="Tajikistan" draggable="true" ondragstart="drag(event)">Tajikistan</td></tr>
-                    <tr><td id="The former Yugoslav Republic of Macedonia" draggable="true" ondragstart="drag(event)">The former Yugoslav Republic of Macedonia</td></tr>
-                    <tr><td id="Turkey" draggable="true" ondragstart="drag(event)">Turkey</td></tr>
-                    <tr><td id="Turkmenistan" draggable="true" ondragstart="drag(event)">Turkmenistan</td></tr>
-                    <tr><td id="Ukraine" draggable="true" ondragstart="drag(event)">Ukraine</td></tr>
-                    <tr><td id="United Kingdom of Great Britain and Northern Ireland" draggable="true" ondragstart="drag(event)">United Kingdom of Great Britain and Northern Ireland</td></tr>
-                    <tr><td id="Uzbekistan" draggable="true" ondragstart="drag(event)">Uzbekistan</td></tr>
-                </table>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4"><span id="A">00:00</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">
+              <span id="A1">00:00</span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">ASSIGNED TIME</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">
+              <button id="b_t_up"><img src="images/buttons/up.png"></button>
+              <button id="b_t_down"><img src="images/buttons/down.png"></button>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <button id="b_start"><img src="images/buttons/startG.png"></button>
+              <button id="b_pause"><img src="images/buttons/pauseO.png"></button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <button id="b_repeat"><img src="images/buttons/repeatR.png"></button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1">
+              <button id="b_clear">CLEAR</button>
+            </td>
+            <td colspan="4">
+              <button id="openPublic">Open/Reset public Timer</button>
+              <button id="closePublic">Close public Timer</button>
+            </td>
+          </tr>
+          <tr><td colspan="4"></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+        </table>
+      </div>
 
+      <div id="speakerConsole-all">
+        <h3>Member States</h3>
+        <table>
+          <tr><td id="Albania" draggable="true" ondragstart="drag(event)">Albania</td></tr>
+          <tr><td id="Andorra" draggable="true" ondragstart="drag(event)">Andorra</td></tr>
+          <tr><td id="Armenia" draggable="true" ondragstart="drag(event)">Armenia</td></tr>
+          <tr><td id="Austria" draggable="true" ondragstart="drag(event)">Austria</td></tr>
+          <tr><td id="Azerbaijan" draggable="true" ondragstart="drag(event)">Azerbaijan</td></tr>
+          <tr><td id="Belarus" draggable="true" ondragstart="drag(event)">Belarus</td></tr>
+          <tr><td id="Belgium" draggable="true" ondragstart="drag(event)">Belgium</td></tr>
+          <tr><td id="Bosnia and Herzegovina" draggable="true" ondragstart="drag(event)">Bosnia and Herzegovina</td></tr>
+          <tr><td id="Bulgaria" draggable="true" ondragstart="drag(event)">Bulgaria</td></tr>
+          <tr><td id="Croatia" draggable="true" ondragstart="drag(event)">Croatia</td></tr>
+          <tr><td id="Cyprus" draggable="true" ondragstart="drag(event)">Cyprus</td></tr>
+          <tr><td id="Czech Republic" draggable="true" ondragstart="drag(event)">Czech Republic</td></tr>
+          <tr><td id="Denmark" draggable="true" ondragstart="drag(event)">Denmark</td></tr>
+          <tr><td id="Estonia" draggable="true" ondragstart="drag(event)">Estonia</td></tr>
+          <tr><td id="Finland" draggable="true" ondragstart="drag(event)">Finland</td></tr>
+          <tr><td id="France" draggable="true" ondragstart="drag(event)">France</td></tr>
+          <tr><td id="Georgia" draggable="true" ondragstart="drag(event)">Georgia</td></tr>
+          <tr><td id="Germany" draggable="true" ondragstart="drag(event)">Germany</td></tr>
+          <tr><td id="Greece" draggable="true" ondragstart="drag(event)">Greece</td></tr>
+          <tr><td id="Hungary" draggable="true" ondragstart="drag(event)">Hungary</td></tr>
+          <tr><td id="Iceland" draggable="true" ondragstart="drag(event)">Iceland</td></tr>
+          <tr><td id="Ireland" draggable="true" ondragstart="drag(event)">Ireland</td></tr>
+          <tr><td id="Israel" draggable="true" ondragstart="drag(event)">Israel</td></tr>
+          <tr><td id="Italy" draggable="true" ondragstart="drag(event)">Italy</td></tr>
+          <tr><td id="Kazakhstan" draggable="true" ondragstart="drag(event)">Kazakhstan</td></tr>
+          <tr><td id="Kyrgyzstan" draggable="true" ondragstart="drag(event)">Kyrgyzstan</td></tr>
+          <tr><td id="Latvia" draggable="true" ondragstart="drag(event)">Latvia</td></tr>
+        </table>
+        <table>
+          <tr><td id="Lithuania" draggable="true" ondragstart="drag(event)">Lithuania</td></tr>
+          <tr><td id="Luxembourg" draggable="true" ondragstart="drag(event)">Luxembourg</td></tr>
+          <tr><td id="Malta" draggable="true" ondragstart="drag(event)">Malta</td></tr>
+          <tr><td id="Monaco" draggable="true" ondragstart="drag(event)">Monaco</td></tr>
+          <tr><td id="Montenegro" draggable="true" ondragstart="drag(event)">Montenegro</td></tr>
+          <tr><td id="Netherlands" draggable="true" ondragstart="drag(event)">Netherlands</td></tr>
+          <tr><td id="Norway" draggable="true" ondragstart="drag(event)">Norway</td></tr>
+          <tr><td id="Poland" draggable="true" ondragstart="drag(event)">Poland</td></tr>
+          <tr><td id="Portugal" draggable="true" ondragstart="drag(event)">Portugal</td></tr>
+          <tr><td id="Republic of Moldova" draggable="true" ondragstart="drag(event)">Republic of Moldova</td></tr>
+          <tr><td id="Romania" draggable="true" ondragstart="drag(event)">Romania</td></tr>
+          <tr><td id="Russian Federation" draggable="true" ondragstart="drag(event)">Russian Federation</td></tr>
+          <tr><td id="San Marino" draggable="true" ondragstart="drag(event)">San Marino</td></tr>
+          <tr><td id="Serbia" draggable="true" ondragstart="drag(event)">Serbia</td></tr>
+          <tr><td id="Slovakia" draggable="true" ondragstart="drag(event)">Slovakia</td></tr>
+          <tr><td id="Slovenia" draggable="true" ondragstart="drag(event)">Slovenia</td></tr>
+          <tr><td id="Spain" draggable="true" ondragstart="drag(event)">Spain</td></tr>
+          <tr><td id="Sweden" draggable="true" ondragstart="drag(event)">Sweden</td></tr>
+          <tr><td id="Switzerland" draggable="true" ondragstart="drag(event)">Switzerland</td></tr>
+          <tr><td id="Tajikistan" draggable="true" ondragstart="drag(event)">Tajikistan</td></tr>
+          <tr><td id="The former Yugoslav Republic of Macedonia" draggable="true" ondragstart="drag(event)">The former Yugoslav Republic of Macedonia</td></tr>
+          <tr><td id="Turkey" draggable="true" ondragstart="drag(event)">Turkey</td></tr>
+          <tr><td id="Turkmenistan" draggable="true" ondragstart="drag(event)">Turkmenistan</td></tr>
+          <tr><td id="Ukraine" draggable="true" ondragstart="drag(event)">Ukraine</td></tr>
+          <tr><td id="United Kingdom of Great Britain and Northern Ireland" draggable="true" ondragstart="drag(event)">United Kingdom of Great Britain and Northern Ireland</td></tr>
+          <tr><td id="Uzbekistan" draggable="true" ondragstart="drag(event)">Uzbekistan</td></tr>
+        </table>
+      </div>
 
-			</div>
-        <div id="speakerConsole-currentSpeaker" ondrop="dropCurrent(event)" ondragover="allowDrop(event)">
-            <h3>Current speaker country</h3>
-			<table class="countryField"><tr><td><span id="countryCurrent"></span></td></tr></table>
-        </div>
-		<div id="speakerConsole-list" ondrop="dropList(event)" ondragover="allowDrop(event)">
-			<h3>Active list of speakers</h3>
-			<table class="countryField"><tr><td><span id="countryList1"></span></td></tr></table>
-			<table class="countryField"><tr><td><span id="countryList2"></span></td></tr></table>
-			<table class="countryField"><tr><td><span id="countryList3"></span></td></tr></table>
-			<table class="countryField"><tr><td><span id="countryList4"></span></td></tr></table>
-			<table class="countryField"><tr><td><span id="countryList5"></span></td></tr></table>
-			<table class="countryField"><tr><td><span id="countryList6"></span></td></tr></table>
-		</div>
-		<!--<div id="gear">
-			<button id="b_gear" onclick="gearUp()"><img src="images/buttons/gearC.png"></button>
-		</div>-->
+      <div id="speakerConsole-currentSpeaker" ondrop="dropCurrent(event)" ondragover="allowDrop(event)">
+        <h3>Current speaker country</h3>
+        <table class="countryField"><tr><td><span id="countryCurrent"></span></td></tr></table>
+      </div>
+
+      <div id="speakerConsole-list" ondrop="dropList(event)" ondragover="allowDrop(event)">
+        <h3>Active list of speakers</h3>
+        <table class="countryField"><tr><td><span id="countryList1"></span></td></tr></table>
+        <table class="countryField"><tr><td><span id="countryList2"></span></td></tr></table>
+        <table class="countryField"><tr><td><span id="countryList3"></span></td></tr></table>
+        <table class="countryField"><tr><td><span id="countryList4"></span></td></tr></table>
+        <table class="countryField"><tr><td><span id="countryList5"></span></td></tr></table>
+        <table class="countryField"><tr><td><span id="countryList6"></span></td></tr></table>
+      </div>
     </div>
-	<!--<div id="template">
-		<img src="images/originals/LimitimerControl_small.jpg">
-	</div>-->
-</body>
+  </body>
 </html>
-
-
-
-
-<!--
-//DO NOT DELETE!!!
-//The timer admin console implementation that includes "Sum-up Time"
-<table class="console">
-    <tr><td></td><td></td><td></td><td></td></tr>
-    <tr>
-        <td colspan="4">
-            <h2>WHO-Timer</h2>
-            <h3>Admin Console</h3>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <table id="colorDivs">
-                <tr>
-                    <td><div class="trafficLightBox" id="box_green"></div></td>
-                    <td><div class="trafficLightBox" id="box_orange"></div></td>
-                    <td><div class="trafficLightBox" id="box_red"></div></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4"><span id="A">00:00</span></td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <span id="A1">00:00</span>
-        </td>
-        <td colspan="2">
-            <span id="A2">00:00</span>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">TOTAL TIME</td>
-        <td colspan="2">SUM-UP TIME</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <button id="b_t_up">UP</button>
-            <button id="b_t_down">DOWN</button>
-        </td>
-        <td colspan="2">
-            <button id="b_s_up">UP</button>
-            <button id="b_s_down">DOWN</button>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <button id="b_start">START</button>
-            <button id="b_pause">PAUSE</button>
-        </td>
-        <td colspan="1">
-            <button id="b_repeat">REPEAT</button>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="1">
-            <button id="b_clear">CLEAR</button>
-        </td>
-        <td colspan="4">
-            <button id="openPublic">Open/Reset public Timer</button>
-            <button id="closePublic">Close public Timer</button>
-        </td>
-    </tr>
-    <tr><td colspan="4"></td></tr>
-    <tr><td></td><td></td><td></td><td></td></tr>
-</table>
--->
-
-
-
-<!--
-WHO Member States:
-Albania
-Andorra
-Armenia
-Austria
-Azerbaijan
-Belarus
-Belgium
-Bosnia and Herzegovina
-Bulgaria
-Croatia
-Cyprus
-Czech Republic
-Denmark
-Estonia
-Finland
-France
-Georgia
-Germany
-Greece
-Hungary
-Iceland
-Ireland
-Israel
-Italy
-Kazakhstan
-Kyrgyzstan
-Latvia
-Lithuania
-Luxembourg
-Malta
-Monaco
-Montenegro
-Netherlands
-Norway
-Poland
-Portugal
-Republic of Moldova
-Romania
-Russian Federation
-San Marino
-Serbia
-Slovakia
-Slovenia
-Spain
-Sweden
-Switzerland
-Tajikistan
-The former Yugoslav Republic of Macedonia
-Turkey
-Turkmenistan
-Ukraine
-United Kingdom of Great Britain and Northern Ireland
-Uzbekistan-->
-
